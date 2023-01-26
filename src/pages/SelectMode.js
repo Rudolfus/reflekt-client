@@ -1,42 +1,36 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AddQuestion from "../components/AddQuestion";
-import axios from "axios";
 import QuestionList from "../components/QuestionList";
 
 const SelectMode = () => {
+  // existingTopic = set of questions that are already made and displayed at the beginning
+  // existingTopic is initially  false, thus not displayed
   const [existingTopic, setExistingTopic] = useState("");
+  // newTopic = question or set of question to be created
+  // newTopic is also initially false, thus not displayed
   const [newTopic, setNewTopic] = useState(false);
 
+  // this function represents the selection of a new topic, thus
+  // the value changes to truthy, thus displayed
+  // at the same time, it negates the other option
   const chooseTopic = (topic) => {
     setExistingTopic(topic);
     setNewTopic(false);
   };
 
+  // like above, vice versa
   const chooseNewTopic = () => {
     setExistingTopic("");
     setNewTopic(true);
   };
 
-  // const [allQuestions, setAllQuestions] = useState([]);
-
-  // const getAllQuestions = () => {
-  //   axios
-  //     .get(`${process.env.REACT_APP_API_URL}/api/questions`)
-  //     .then((allQuestions) => setAllQuestions(allQuestions.data))
-  //     .catch((error) => console.log("error getting all the projects", error));
-  // };
-
-  // useEffect(() => {
-  //   getAllQuestions();
-  // }, []);
-
   return (
     <div>
-      <p>{JSON.stringify(existingTopic)}</p>
-      <p>{JSON.stringify(newTopic)}</p>
       <section>
         <button
           onClick={() => {
+            // here the function above is called and the string is the argument
+            // passed as topic and then the state respectively
             chooseTopic("self-care");
           }}
         >
@@ -83,7 +77,7 @@ const SelectMode = () => {
           relationship
         </button>
       </section>
-
+      <br />
       <button onClick={chooseNewTopic}>create new questions</button>
       {/* if the left thing is true, render the right thing */}
       {newTopic && <AddQuestion />}
