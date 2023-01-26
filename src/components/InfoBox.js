@@ -2,8 +2,39 @@ import React from 'react'
 
 const InfoBox = () => {
   return (
-    <div>InfoBox</div>
-  )
+    <div>
+      <div>
+        <div>
+          <img src={".../public/placeholder_icon.png"} alt="icon" />
+        </div>
+        <h4>Lower stress and improve your relationships.</h4>
+        <p>
+          Reflekt helps with stress management and emotional regulation by
+          providing an outlet for expressing thoughts and feelings.
+        </p>
+      </div>
+
+      <div>
+        <div>Here goes an icon.</div>
+        <h4>Change your perception.</h4>
+        <p>
+          Reflekt improves self-awareness and insight by allowing individuals to
+          reflect on their experiences and gain a better understanding of
+          themselves and their behaviors.
+        </p>
+      </div>
+
+      <div>
+        <div>Here goes an icon.</div>
+        <h4>Reach your goals by choosing your attitude.</h4>
+        <p>
+          Reflekt also aids in goal setting and achieving personal growth by
+          allowing individuals to track their progress and make plans for future
+          development.
+        </p>
+      </div>
+    </div>
+  );
 }
 
 export default InfoBox
