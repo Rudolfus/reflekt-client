@@ -35,6 +35,6 @@ const InfoBox = () => {
       </div>
     </div>
   );
-}
+};
 
 export default InfoBox
