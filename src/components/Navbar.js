@@ -1,5 +1,45 @@
-const Navbar = () => {
-  return <div>This is the Navbar</div>;
-}
+import { NavLink } from "react-router-dom";
 
-export default Navbar
+const Navbar = () => {
+  return (
+    <nav>
+      <NavLink to="/">
+        <button>Reflekt</button>
+      </NavLink>
+
+      <NavLink to="/articles">
+        <button>articles</button>
+      </NavLink>
+
+      <NavLink to="/about">
+        <button>about us</button>
+      </NavLink>
+
+      <NavLink to="/start">
+        <button>start reflekting</button>
+      </NavLink>
+
+      <NavLink to="/">
+        <button>topics</button>
+      </NavLink>
+
+      <NavLink to="/myreflect">
+        <button>my Reflekt</button>
+      </NavLink>
+
+      <NavLink to="/">
+        <button>log out</button>
+      </NavLink>
+
+      <NavLink to="/signup">
+        <button>log in</button>
+      </NavLink>
+
+      <NavLink to="/signup">
+        <button>Try it now</button>
+      </NavLink>
+    </nav>
+  );
+};
+
+export default Navbar;
