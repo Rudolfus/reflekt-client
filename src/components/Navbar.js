@@ -2,7 +2,8 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className="navbar">
+      <div>LOGO</div>
       <NavLink to="/">
         <button>Reflekt</button>
       </NavLink>
@@ -17,10 +18,6 @@ const Navbar = () => {
 
       <NavLink to="/start">
         <button>start reflekting</button>
-      </NavLink>
-
-      <NavLink to="/">
-        <button>topics</button>
       </NavLink>
 
       <NavLink to="/myreflect">
