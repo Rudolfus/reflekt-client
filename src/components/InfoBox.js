@@ -1,11 +1,12 @@
 import React from 'react'
+import placeholder from "../assets/placeholder_icon.png";
 
 const InfoBox = () => {
   return (
     <div>
       <div>
         <div>
-          <img src={".../public/placeholder_icon.png"} alt="icon" />
+          <img src={placeholder} alt="icon" />
         </div>
         <h4>Lower stress and improve your relationships.</h4>
         <p>
@@ -15,7 +16,9 @@ const InfoBox = () => {
       </div>
 
       <div>
-        <div>Here goes an icon.</div>
+        <div>
+          <img src={placeholder} alt="icon" />
+        </div>
         <h4>Change your perception.</h4>
         <p>
           Reflekt improves self-awareness and insight by allowing individuals to
@@ -25,7 +28,9 @@ const InfoBox = () => {
       </div>
 
       <div>
-        <div>Here goes an icon.</div>
+        <div>
+          <img src={placeholder} alt="icon" />
+        </div>
         <h4>Reach your goals by choosing your attitude.</h4>
         <p>
           Reflekt also aids in goal setting and achieving personal growth by
