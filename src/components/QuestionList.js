@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import QuestionCard from "./QuestionCard";
 
 const QuestionList = ({ topic }) => {
   const [allQuestions, setAllQuestions] = useState([]);
@@ -30,8 +31,8 @@ const QuestionList = ({ topic }) => {
       <h3>QuestionList-{topic}</h3>
       {filteredQuestions.map((question) => {
         return (
-          <div key={question._id}>
-            <h4>{question.question}</h4>
+          <div>
+            <QuestionCard key={question._id} question={question} />
           </div>
         );
       })}
