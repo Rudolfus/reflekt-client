@@ -6,3 +6,20 @@
 .navbar {
   background-color: #9E8301;
 }
+.font-link {
+  font-family: 'EB Garamond', serif;
+  font-family: 'Raleway', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'EB Garamond', serif;
+}
+
+.p {
+  font-family: 'Raleway', sans-serif;
+}
