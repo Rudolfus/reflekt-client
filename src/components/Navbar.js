@@ -20,7 +20,7 @@ const Navbar = () => {
         <button>start reflekting</button>
       </NavLink>
 
-      <NavLink to="/myreflect">
+      <NavLink to="/myreflekt">
         <button>my Reflekt</button>
       </NavLink>
 

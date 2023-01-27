@@ -23,7 +23,7 @@ const AddSingleQuestion = () => {
         setQuestion("");
         setTopic("");
         setIsPublic();
-        navigate("/myreflect");
+        navigate("/myreflekt");
       })
       .catch((error) =>
         console.log("Sorry, there was an error creating your question.", error)

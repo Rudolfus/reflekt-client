@@ -11,9 +11,13 @@ import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import TopicCard from "./components/TopicCard";
 import QuestionList from "./components/QuestionList";
+///////////////////////////////////////////
 import AddSingleQuestion from "./components/AddSingleQuestion";
 import GetAllQuestions from "./components/GetAllQuestions";
 import GetSingleQuestion from "./components/GetSingleQuestion";
+import EditQuestion from "./components/EditQuestion";
+///////////////////////////////////////////
+import AddAnswer from "./pages/AddAnswer";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -47,7 +51,7 @@ function App() {
         <Route path="/articles" element={<Articles />} />
         <Route path="/about" element={<About />} />
         {/* <Route path="/start" element={<SelectMode />} /> */}
-        <Route path="/myreflect" element={<Profile />} />
+        <Route path="/myreflekt" element={<Profile />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/question/:topic" element={<QuestionList />} />
@@ -76,8 +80,14 @@ function App() {
             />
           }
         />
+        <Route
+          path="/editquestion/:questionId"
+          element={
+            <EditQuestion questionsArr={questionsArr} isLoading={isLoading} />
+          }
+        />
+        <Route path="/addanswer" element={<AddAnswer />} />
       </Routes>
-
       <Footer />
     </div>
   );
