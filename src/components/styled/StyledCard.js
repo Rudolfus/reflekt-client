@@ -8,7 +8,7 @@ export const StyledCard = styled.div`
   background-color: #fdfdfd;
   border-radius: 8px;
   padding: 1em;
-
-  .question {
-  }
+  margin: 0.5em;
+  display: flex;
+  flex-direction: column;
 `;

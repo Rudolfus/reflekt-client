@@ -1,6 +1,6 @@
 import ".././App.css";
 import { useState } from "react";
-import AddQuestion from "../components/AddQuestion";
+import AddSingleQuestion from "../components/AddSingleQuestion";
 import QuestionList from "../components/QuestionList";
 
 const SelectMode = () => {
@@ -89,7 +89,7 @@ const SelectMode = () => {
         create new questions
       </button>
       {/* if the left thing is true, render the right thing */}
-      {newTopic && <AddQuestion />}
+      {newTopic && <AddSingleQuestion />}
       {/* if left thing is true, render the middle thing, if false, the right
         {newTopic ? <AddQuestion /> : null} */}
       {existingTopic && <QuestionList topic={existingTopic} />}

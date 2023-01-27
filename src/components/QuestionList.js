@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import QuestionCard from "./QuestionCard";
+import QuestionCard from "./TopicDetails";
 import AddAnswer from "../pages/AddAnswer";
-
-const QuestionList = ({ topic }) => {
+import { useParams } from "react-router-dom";
+//{ topic }
+const QuestionList = () => {
+  const { topic } = useParams();
   const [allQuestions, setAllQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
 

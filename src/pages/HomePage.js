@@ -1,5 +1,4 @@
 import InfoBox from "../components/InfoBox";
-import SetOfQuestions from "../components/SetOfQuestions";
 import QuestionCarrousel from "../components/QuestionCarrousel";
 import wave from "../assets/wave-homepage.jpeg";
 
@@ -10,7 +9,7 @@ const HomePage = () => {
       {/* landing page */}
       <InfoBox />
       <QuestionCarrousel />
-      <SetOfQuestions />
+      {/* <SetOfQuestions /> */}
       {/* info about science page */}
       <button>Try it now</button>
     </div>

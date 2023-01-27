@@ -21,6 +21,10 @@ h6 {
   color: #7B60EB;
 }
 
+.img {
+  display: flex;
+  align-items: center;
+}
 .p {
   font-family: 'Raleway', sans-serif;
 }
