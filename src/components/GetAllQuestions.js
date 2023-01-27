@@ -13,7 +13,7 @@ const GetAllQuestions = ({ questionsArr, isLoading }) => {
   return (
     <div>
       {questionsArr === null
-        ? "loading beers ..."
+        ? "loading questions ..."
         : questionsArr.map((onlyOneQue) => {
             return (
               <div key={onlyOneQue._id}>

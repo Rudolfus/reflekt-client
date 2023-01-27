@@ -18,6 +18,7 @@ import GetSingleQuestion from "./components/GetSingleQuestion";
 import EditQuestion from "./components/EditQuestion";
 ///////////////////////////////////////////
 import AddAnswer from "./pages/AddAnswer";
+import GetAllAnswers from "./components/GetAllAnswers";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -33,7 +34,25 @@ function App() {
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/questions`)
       .then((response) => {
-        setQuestionsArr(response.data); // I want to access and display the API's response
+        setQuestionsArr(response.data);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
+  const [answersArr, setAnswersArr] = useState();
+
+  useEffect(() => {
+    listAnswers();
+  }, []);
+
+  const listAnswers = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api/answers`)
+      .then((response) => {
+        setAnswersArr(response.data);
         setIsLoading(false);
       })
       .catch((e) => {
@@ -87,6 +106,12 @@ function App() {
           }
         />
         <Route path="/addanswer" element={<AddAnswer />} />
+        <Route
+          path="/answers"
+          element={
+            <GetAllAnswers answersArr={answersArr} isLoading={isLoading} />
+          }
+        />
       </Routes>
       <Footer />
     </div>
