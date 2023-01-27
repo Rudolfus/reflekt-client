@@ -19,6 +19,7 @@ import EditQuestion from "./components/EditQuestion";
 ///////////////////////////////////////////
 import AddAnswer from "./pages/AddAnswer";
 import GetAllAnswers from "./components/GetAllAnswers";
+import GetSingleAnswer from "./components/GetSingleAnswer";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -110,6 +111,12 @@ function App() {
           path="/answers"
           element={
             <GetAllAnswers answersArr={answersArr} isLoading={isLoading} />
+          }
+        />
+        <Route
+          path="/answers/:answerId"
+          element={
+            <GetSingleAnswer answersArr={answersArr} isLoading={isLoading} />
           }
         />
       </Routes>
