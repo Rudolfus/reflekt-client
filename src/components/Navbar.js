@@ -28,7 +28,7 @@ const Navbar = () => {
         <button>log out</button>
       </NavLink>
 
-      <NavLink to="/signup">
+      <NavLink to="/login">
         <button>log in</button>
       </NavLink>
 
