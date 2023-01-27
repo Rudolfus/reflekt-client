@@ -1,6 +1,7 @@
 import InfoBox from "../components/InfoBox";
 import QuestionCarrousel from "../components/QuestionCarrousel";
 import wave from "../assets/wave-homepage.jpeg";
+import { NavLink } from "react-router-dom";
 
 const HomePage = () => {
   return (
@@ -11,7 +12,9 @@ const HomePage = () => {
       <QuestionCarrousel />
       {/* <SetOfQuestions /> */}
       {/* info about science page */}
-      <button>Try it now</button>
+      <NavLink to="/signup">
+        <button>Try it now</button>
+      </NavLink>
     </div>
   );
 };

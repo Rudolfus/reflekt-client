@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../context/auth.context";
+import { AuthContext } from "../context/auth.context";
 
 function LogIn(props) {
   const [email, setEmail] = useState("");
@@ -11,7 +11,7 @@ function LogIn(props) {
   const navigate = useNavigate();
 
   /* get authenticateUser from the context */
-  // const { storeToken, authenticateUser } = useContext(AuthContext);
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -27,9 +27,9 @@ function LogIn(props) {
         // with the JWT string ->  response.data.authToken
         console.log("JWT token", response.data.authToken);
 
-        // storeToken(response.data.authToken);
+        storeToken(response.data.authToken);
 
-        // authenticateUser();
+        authenticateUser();
         navigate("/");
       })
       .catch((error) => {
