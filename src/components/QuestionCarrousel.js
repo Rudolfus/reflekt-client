@@ -1,5 +1,5 @@
 const QuestionCarrousel = () => {
-  return <div>QuestionCarousel</div>;
+  return <div>QuestionCarrousel</div>;
 };
 
 export default QuestionCarrousel;

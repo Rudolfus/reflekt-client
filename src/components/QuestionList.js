@@ -28,7 +28,7 @@ const QuestionList = ({ topic }) => {
 
   return (
     <div>
-      <h3>QuestionList-{topic}</h3>
+      <h2>{topic}</h2>
       {filteredQuestions.map((question) => {
         return (
           <div>

@@ -3,11 +3,11 @@ import AddQuestion from "../components/AddQuestion";
 import QuestionList from "../components/QuestionList";
 
 const SelectMode = () => {
-  // existingTopic = set of questions that are already made and displayed at the beginning
+  // existingTopic = set of questions that are already made and displayed on click (e.g. "smoking")
   // existingTopic is initially  false, thus not displayed
   const [existingTopic, setExistingTopic] = useState("");
-  // newTopic = question or set of question to be created
-  // newTopic is also initially false, thus not displayed
+  // newTopic = option to select single/set of new questions
+  // newTopic is also initially false, thus the not displayed
   const [newTopic, setNewTopic] = useState(false);
 
   // this function represents the selection of a new topic, thus
