@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom"; //  <== IMPORT
 
-function EditQuestion(props) {
+function EditQuestion() {
   const [topic, setTopic] = useState("");
   const [question, setQuestion] = useState("");
   const [isPublic, setIsPublic] = useState(true);
