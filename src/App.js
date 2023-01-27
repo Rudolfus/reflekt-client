@@ -14,8 +14,29 @@ import QuestionList from "./components/QuestionList";
 import AddSingleQuestion from "./components/AddSingleQuestion";
 import GetAllQuestions from "./components/GetAllQuestions";
 import GetSingleQuestion from "./components/GetSingleQuestion";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
+  const [questionsArr, setQuestionsArr] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    listQuestions();
+  }, []);
+
+  const listQuestions = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api/questions`)
+      .then((response) => {
+        setQuestionsArr(response.data); // I want to access and display the API's response
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   return (
     <div className="App">
       <Navbar />
@@ -35,9 +56,26 @@ function App() {
         <Route path="/addSetOfQue" element={< />} />
         <Route path="/addSingleQue" element={< />} /> */}
         {/* CRUD QUESTION */}
+
         <Route path="/addquestion" element={<AddSingleQuestion />} />
-        <Route path="/allquestion" element={<GetAllQuestions />} />
-        <Route path="/singlequestion" element={<GetSingleQuestion />} />
+        <Route
+          path="/questions"
+          element={
+            <GetAllQuestions
+              questionsArr={questionsArr}
+              isLoading={isLoading}
+            />
+          }
+        />
+        <Route
+          path="/questions/:questionId"
+          element={
+            <GetSingleQuestion
+              questionsArr={questionsArr}
+              isLoading={isLoading}
+            />
+          }
+        />
       </Routes>
 
       <Footer />
