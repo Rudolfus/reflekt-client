@@ -4,8 +4,7 @@ import { StyledCard } from "./styled/StyledCard";
 const QuestionCard = ({ question }) => {
   return (
     <StyledCard>
-      question
-      <h4>{question.question}</h4>
+      <h3>{question.question}</h3>
     </StyledCard>
   );
 };

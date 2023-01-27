@@ -4,6 +4,7 @@ const About = () => {
   return (
     <div>
       <div>
+        <h1>About Reflekt</h1>
         <div>
           <img src={placeholder} alt="icon" />
         </div>

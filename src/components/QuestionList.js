@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import QuestionCard from "./QuestionCard";
+import AddAnswer from "../pages/AddAnswer";
 
 const QuestionList = ({ topic }) => {
   const [allQuestions, setAllQuestions] = useState([]);
@@ -17,6 +18,10 @@ const QuestionList = ({ topic }) => {
     getAllQuestions();
     setLoading(false);
   }, []);
+
+  const handleClick = () => {
+    return <AddAnswer topicChosen={topic} />;
+  };
 
   const filteredQuestions = allQuestions.filter((question) => {
     return question.topic === topic;
@@ -36,6 +41,7 @@ const QuestionList = ({ topic }) => {
           </div>
         );
       })}
+      <button onClick={handleClick}>choose this topic</button>
     </div>
   );
 };
