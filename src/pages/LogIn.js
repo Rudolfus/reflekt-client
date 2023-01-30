@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import tree from "../assets/R-Illu-3-baum.png";
 
 function LogIn(props) {
   const [email, setEmail] = useState("");
@@ -60,6 +61,7 @@ function LogIn(props) {
 
       <p>Don't have an account yet?</p>
       <Link to={"/signup"}> Sign Up</Link>
+      <img src={tree} className="full-width-img" alt="wave-placeholder" />
     </div>
   );
 }

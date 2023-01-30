@@ -1,4 +1,12 @@
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
+import "../App.css";
+import YoutubeEmbed from "../components/YoutubeEmbed";
+
 const Articles = () => {
+  const { isLoggedIn } = useContext(AuthContext);
+
   return (
     <div>
       <h1>The Science behind Reflekt</h1>
@@ -27,8 +35,24 @@ const Articles = () => {
       </p>
       <h2>More resources</h2>
       <p>Here go links to youtube videos</p>
+      <h2>Tackle Dissatisfaction</h2>
+      <YoutubeEmbed embedId="WPPPFqsECz0?modestbranding=1" />
       <h2>Our Research</h2>
       <p>Here go links to research papers</p>
+      {isLoggedIn && (
+        <>
+          <NavLink to="/myreflekt">
+            <button>Start reflekting</button>
+          </NavLink>
+        </>
+      )}
+      {!isLoggedIn && (
+        <>
+          <NavLink to="/signup">
+            <button>Try it now</button>
+          </NavLink>
+        </>
+      )}
     </div>
   );
 };

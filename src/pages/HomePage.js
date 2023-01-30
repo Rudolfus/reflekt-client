@@ -1,20 +1,34 @@
 import InfoBox from "../components/InfoBox";
 import QuestionCarrousel from "../components/QuestionCarrousel";
-import tree from "../assets/R-Illu-3-baum.png";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 const HomePage = () => {
+  const { isLoggedIn } = useContext(AuthContext);
   return (
     <div>
-      <img src={tree} className="full-width-img" alt="wave-placeholder" />
+      <h1>Change starts in the mind.</h1>
       {/* landing page */}
       <InfoBox />
       <QuestionCarrousel />
       {/* <SetOfQuestions /> */}
       {/* info about science page */}
-      <NavLink to="/signup">
-        <button>Try it now</button>
-      </NavLink>
+
+      {isLoggedIn && (
+        <>
+          <NavLink to="/myreflekt">
+            <button>Start reflekting</button>
+          </NavLink>
+        </>
+      )}
+      {!isLoggedIn && (
+        <>
+          <NavLink to="/signup">
+            <button>Try it now</button>
+          </NavLink>
+        </>
+      )}
     </div>
   );
 };

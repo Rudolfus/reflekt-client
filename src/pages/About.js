@@ -1,8 +1,14 @@
 import placeholder from "../assets/placeholder_icon.png";
+import tree from "../assets/R-Illu-3-baum.png";
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 const About = () => {
+  const { isLoggedIn } = useContext(AuthContext);
   return (
     <div>
+      <img src={tree} className="full-width-img" alt="wave-placeholder" />
       <div>
         <h1>About Reflekt</h1>
         <div>
@@ -39,6 +45,20 @@ const About = () => {
           an outlet for expressing thoughts and feelings.
         </p>
       </div>
+      {isLoggedIn && (
+        <>
+          <NavLink to="/myreflekt">
+            <button>Start reflekting</button>
+          </NavLink>
+        </>
+      )}
+      {!isLoggedIn && (
+        <>
+          <NavLink to="/signup">
+            <button>Try it now</button>
+          </NavLink>
+        </>
+      )}
     </div>
   );
 };

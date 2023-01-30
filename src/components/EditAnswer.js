@@ -39,17 +39,17 @@ function EditAnswer() {
       });
   };
 
-  ///////////////// delete a question /////////////////
+  ///////////////// delete an answer /////////////////
 
   const deleteAnswer = () => {
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/api/questions/${answerId}`)
+      .delete(`${process.env.REACT_APP_API_URL}/api/answers/${answerId}`)
       .then(() => {
         navigate("/myreflekt");
       })
       .catch((err) => console.log(err));
   };
-  ///////////////// delete a question /////////////////
+  ///////////////// delete an answer /////////////////
 
   return (
     <div>
@@ -67,11 +67,11 @@ function EditAnswer() {
         <input
           type="checkbox"
           name="privacy"
-          value={isPublic}
+          checked={isPublic}
           onClick={(e) => setIsPublic(!isPublic)}
         />
 
-        <button type="submit">Update Question</button>
+        <button type="submit">Update Answer</button>
       </form>
 
       <button onClick={deleteAnswer}>Delete Answer</button>

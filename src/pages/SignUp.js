@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import tree from "../assets/R-Illu-3-baum.png";
 import axios from "axios";
-
-const API_URL = "http://localhost:5005";
+import { AuthContext } from "../context/auth.context";
+import { useContext } from "react";
 
 function SignupPage(props) {
   const [email, setEmail] = useState("");
@@ -11,6 +12,9 @@ function SignupPage(props) {
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
+
+  /* get authenticateUser from the context */
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -21,9 +25,23 @@ function SignupPage(props) {
     const requestBody = { email, password, name };
 
     axios
-      .post(`${API_URL}/auth/signup`, requestBody)
+      .post(`${process.env.REACT_APP_API_URL}/auth/signup`, requestBody)
       .then((response) => {
-        navigate("/login");
+        return axios.post(
+          `${process.env.REACT_APP_API_URL}/auth/login`,
+          requestBody
+        );
+      })
+
+      .then((response) => {
+        // Request to the server's endpoint `/auth/login` returns a response
+        // with the JWT string ->  response.data.authToken
+        console.log("JWT token", response.data.authToken);
+
+        storeToken(response.data.authToken);
+
+        authenticateUser();
+        navigate("/");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
@@ -31,34 +49,35 @@ function SignupPage(props) {
       });
   };
 
-  return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+return (
+  <div className="SignupPage">
+    <h1>Sign Up</h1>
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+    <form onSubmit={handleSignupSubmit}>
+      <label>Email:</label>
+      <input type="email" name="email" value={email} onChange={handleEmail} />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+      <label>Password:</label>
+      <input
+        type="password"
+        name="password"
+        value={password}
+        onChange={handlePassword}
+      />
 
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
+      <label>Name:</label>
+      <input type="text" name="name" value={name} onChange={handleName} />
 
-        <button type="submit">Sign Up</button>
-      </form>
+      <button type="submit">Sign Up</button>
+    </form>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+    {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
-    </div>
-  );
+    <p>Already have account?</p>
+    <Link to={"/login"}> Login</Link>
+    <img src={tree} className="full-width-img" alt="wave-placeholder" />
+  </div>
+);
 }
 
 export default SignupPage;
