@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import "../App.css";
@@ -78,15 +78,25 @@ const Articles = () => {
       <br />
       {isLoggedIn && (
         <>
-          <NavLink to="/myreflekt">
-            <button>Start reflekting</button>
-          </NavLink>
+          <div class="ta-c padT150 padB150">
+            <NavLink to="/myreflekt">
+              <div class="ta-c padT150 padB150">
+                <button class="button accept-btn" onclick="addAnimation2()">
+                  Start reflekting
+                </button>
+              </div>
+            </NavLink>
+          </div>
         </>
       )}
       {!isLoggedIn && (
         <>
           <NavLink to="/signup">
-            <button>Try it now</button>
+            <div class="ta-c padT150 padB150">
+              <button class="button accept-btn" onclick="addAnimation2()">
+                Try it now
+              </button>
+            </div>
           </NavLink>
         </>
       )}

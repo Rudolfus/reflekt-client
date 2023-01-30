@@ -17,15 +17,25 @@ const HomePage = () => {
 
       {isLoggedIn && (
         <>
-          <NavLink to="/myreflekt">
-            <button>Start reflekting</button>
-          </NavLink>
+          <div class="ta-c padT150 padB150">
+            <NavLink to="/myreflekt">
+              <div class="ta-c padT150 padB150">
+                <button class="button accept-btn" onclick="addAnimation2()">
+                  Start reflekting
+                </button>
+              </div>
+            </NavLink>
+          </div>
         </>
       )}
       {!isLoggedIn && (
         <>
           <NavLink to="/signup">
-            <button>Try it now</button>
+            <div class="ta-c padT150 padB150">
+              <button class="button accept-btn" onclick="addAnimation2()">
+                Try it now
+              </button>
+            </div>
           </NavLink>
         </>
       )}

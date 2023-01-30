@@ -1,3 +1,4 @@
+import "../App.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import tree from "../assets/R-Illu-3-baum.png";
@@ -49,35 +50,41 @@ function SignupPage(props) {
       });
   };
 
-return (
-  <div className="SignupPage">
-    <h1>Sign Up</h1>
+  return (
+    <div className="SignupPage">
+      <h1>Sign Up</h1>
 
-    <form onSubmit={handleSignupSubmit}>
-      <label>Email:</label>
-      <input type="email" name="email" value={email} onChange={handleEmail} />
+      <form onSubmit={handleSignupSubmit}>
+        <label>Email:</label>
+        <input type="email" name="email" value={email} onChange={handleEmail} />
 
-      <label>Password:</label>
-      <input
-        type="password"
-        name="password"
-        value={password}
-        onChange={handlePassword}
-      />
+        <label>Password:</label>
+        <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={handlePassword}
+        />
 
-      <label>Name:</label>
-      <input type="text" name="name" value={name} onChange={handleName} />
+        <label>Name:</label>
+        <input type="text" name="name" value={name} onChange={handleName} />
 
-      <button type="submit">Sign Up</button>
-    </form>
+        <button type="submit">Sign Up</button>
+      </form>
 
-    {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-    <p>Already have account?</p>
-    <Link to={"/login"}> Login</Link>
-    <img src={tree} className="full-width-img" alt="wave-placeholder" />
-  </div>
-);
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      <br />
+      <p>Already have account?</p>
+      <Link to="/login">
+        <div class="ta-c padT150 padB150">
+          <button class="button accept-btn" onclick="addAnimation2()">
+            Log in
+          </button>
+        </div>
+      </Link>
+      <img src={tree} className="full-width-img" alt="wave-placeholder" />
+    </div>
+  );
 }
 
 export default SignupPage;

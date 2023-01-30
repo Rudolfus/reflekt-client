@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import "../App.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
@@ -58,9 +59,15 @@ function LogIn(props) {
         <button type="submit">Login</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
+      <br />
       <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <Link to="/signup">
+        <div class="ta-c padT150 padB150">
+          <button class="button accept-btn" onclick="addAnimation2()">
+            Try it now
+          </button>
+        </div>
+      </Link>
       <img src={tree} className="full-width-img" alt="wave-placeholder" />
     </div>
   );
