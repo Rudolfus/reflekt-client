@@ -1,45 +1,27 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { AuthContext } from "../context/auth.context";
 
 const Profile = () => {
-  const [usersArr, setUsersArr] = useState();
+  const [userProfile, setUserProfile] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const { userId } = useParams();
-  const { user, storeToken } = useContext(AuthContext);
+  const storedToken = localStorage.getItem("authToken");
 
-  // const showUser = () => {
-  //   // Get the stored token from the localStorage
-  //   const storedToken = localStorage.getItem("authToken");
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + "/api/user", {
+        headers: { Authorization: "Bearer " + storedToken },
+      })
+      .then((response) => {
+        const user = response.data;
+        console.log(user);
 
-  //   // If the token exists in the localStorage
-  // if (storedToken) {
-  // We must send the JWT token in the request's "Authorization" Headers
-  // axios
-  //   .get(`${process.env.REACT_APP_API_URL}/users/` + {user._id}, {
-  //     headers: { Authorization: `Bearer ${storedToken}` },
-  //   })
-  //   .then((response) => {
-  //     // If the server verifies that the JWT token is valid
-  //     const user = response.data;
-  //     // Update state variables
-  //     setUser(user);
-  //   })
-  //   .catch((error) => {
-  //     // If the server sends an error response (invalid token)
-  //     // Update state variables
-  //     setUser(null);
-  //   });
-  //   } else {
-  //     // If the token is not available (or is removed)
-  //     setUser(null);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   showUser();
-  // }, []);
+        setIsLoading(false);
+        setUserProfile(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   if (isLoading) {
     return (
@@ -50,35 +32,27 @@ const Profile = () => {
     );
   }
 
-  const oneSingleUser = usersArr.find((userDetails) => {
-    return userDetails._id === userId;
-  });
-
   return (
     <div>
-      {usersArr === null ? (
+      {userProfile === null ? (
         "loading answers ..."
       ) : (
         <div>
           <div>
-            This is the profile card
-            <div>{oneSingleUser.image}</div>
-            <h1>{user.name}</h1>
+            <img src={userProfile.image} alt="profile-pic" />
+            <h1>{userProfile.name}</h1>
             <p>Acount & Settings</p>
-            <h3>{oneSingleUser.questions.length} Total questions following</h3>
+            <h3>{userProfile.questions.length} questions</h3>
+            <p>Total questions following</p>
           </div>
-          <section>
-            <h4>{oneSingleUser.name}</h4>
+          {/* <section>
+            <h4>{userProfile.name}</h4>
             <button>edit</button>
             <hr></hr>
-            <h4>{oneSingleUser.email}</h4>
+            <h4>{userProfile.email}</h4>
             <button>edit</button>
             <hr></hr>
-            {/* <h4>{oneSingleUser.password}</h4>
-                  <button>edit</button>
-                  <hr></hr> */}
-          </section>
-          {/* <Link to logout */}
+          </section> */}
           <button>delete</button>
         </div>
       )}
