@@ -4,41 +4,41 @@ const TopicCard = () => {
   return (
     <div>
       <section>
-        <NavLink to="/question/self-care">
-          <button className="button accept-btn" onClick="addAnimation2()">
+        <NavLink to="/question/self-care">self-care
+          {/* <button className="button accept-btn" onClick="addAnimation2()">
             self-care
-          </button>
+          </button> */}
         </NavLink>
 
-        <NavLink to="/question/smoking">
-          <button className="button accept-btn" onClick="addAnimation2()">
+        <NavLink to="/question/smoking">smoking
+          {/* <button className="button accept-btn" onClick="addAnimation2()">
             smoking
-          </button>
+          </button> */}
         </NavLink>
 
-        <NavLink to="/question/job">
-          <button className="button accept-btn" onClick="addAnimation2()">
+        <NavLink to="/question/job">job
+          {/* <button className="button accept-btn" onClick="addAnimation2()">
             job
-          </button>
+          </button> */}
         </NavLink>
 
-        <NavLink to="/question/motivation">
-          <button className="button accept-btn" onClick="addAnimation2()">
+        <NavLink to="/question/motivation"> motivation
+          {/* <button className="button accept-btn" onClick="addAnimation2()">
             motivation
-          </button>
+          </button> */}
         </NavLink>
 
-        <NavLink to="/question/eating">
-          <button className="button accept-btn" onClick="addAnimation2()">
+        <NavLink to="/question/eating"> eating
+          {/* <button className="button accept-btn" onClick="addAnimation2()">
             eating
-          </button>
+          </button> */}
         </NavLink>
 
-        <NavLink to="/question/relationships">
-          <button className="button accept-btn" onClick="addAnimation2()">
+        <NavLink to="/question/relationships"> relationships
+          {/* <button className="button accept-btn" onClick="addAnimation2()">
             relationships
           </button>
-        </NavLink>
+        </NavLink> */}
       </section>
     </div>
   );

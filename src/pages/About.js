@@ -48,13 +48,14 @@ const About = () => {
       {isLoggedIn && (
         <>
           <div class="ta-c padT150 padB150">
-            <NavLink to="/myreflekt">
+            <NavLink>Start reflekting</NavLink>
+            {/* <NavLink to="/myreflekt">
               <div class="ta-c padT150 padB150">
                 <button class="button accept-btn" onClick="addAnimation2()">
                   Start reflekting
                 </button>
               </div>
-            </NavLink>
+            </NavLink> */}
           </div>
         </>
       )}
