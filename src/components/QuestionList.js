@@ -39,9 +39,9 @@ const QuestionList = () => {
         );
       })}
       <NavLink to="/addanswer">
-        <button className="button accept-btn" onClick="addAnimation2()">
-          reflekt
-        </button>
+        {/* <button className="button accept-btn" onClick="addAnimation2()"> */}
+        reflekt
+        {/* </button> */}
       </NavLink>
     </div>
   );
