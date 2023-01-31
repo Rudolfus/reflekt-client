@@ -17,16 +17,16 @@ const HomePage = () => {
 
       {isLoggedIn && (
         <>
-          <div class="ta-c padT150 padB150">
+          {/* <div class="ta-c padT150 padB150"> */}
             <NavLink to="/myreflekt">
-              <div class="ta-c padT150 padB150">
-                <button class="button accept-btn" onClick="addAnimation2()">
-                  Start reflekting
-                </button>
-              </div>
+              {/* <div class="ta-c padT150 padB150">
+                <button class="button accept-btn" onClick="addAnimation2()"> */}
+              Start reflekting
+              {/* </button> */}
+              {/* </div> */}
             </NavLink>
-          </div>
-        </>
+          {/* </div> */}
+        {/* </> */}
       )}
       {!isLoggedIn && (
         <>

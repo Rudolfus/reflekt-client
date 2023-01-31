@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import "../App.css";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import tree from "../assets/R-Illu-3-baum.png";
 
@@ -62,7 +62,7 @@ function LogIn(props) {
       <br />
       <p>Don't have an account yet?</p>
 
-      <Link to="/signup">Try it now</Link>
+      <NavLink to="/signup">Try it now</NavLink>
       {/* <div class="ta-c padT150 padB150">
         <button class="button accept-btn" onClick="addAnimation2()">
           <Link to="/signup">Try it now</Link>
