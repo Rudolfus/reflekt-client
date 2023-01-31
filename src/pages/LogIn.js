@@ -61,13 +61,13 @@ function LogIn(props) {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <br />
       <p>Don't have an account yet?</p>
-      <Link to="/signup">
-        <div class="ta-c padT150 padB150">
-          <button class="button accept-btn" onClick="addAnimation2()">
-            Try it now
-          </button>
-        </div>
-      </Link>
+
+      <Link to="/signup">Try it now</Link>
+      {/* <div class="ta-c padT150 padB150">
+        <button class="button accept-btn" onClick="addAnimation2()">
+          <Link to="/signup">Try it now</Link>
+        </button>
+      </div> */}
       <img src={tree} className="full-width-img" alt="wave-placeholder" />
     </div>
   );

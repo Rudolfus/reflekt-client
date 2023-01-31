@@ -33,11 +33,11 @@ const Navbar = () => {
       {!isLoggedIn && (
         <>
           <NavLink to="/login">
-            <button>log in</button>
+            Log in
           </NavLink>
 
           <NavLink to="/signup">
-            <button>Try it now</button>
+            Try it now
           </NavLink>
         </>
       )}

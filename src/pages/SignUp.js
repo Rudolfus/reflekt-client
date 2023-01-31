@@ -1,6 +1,7 @@
 import "../App.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import tree from "../assets/R-Illu-3-baum.png";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
@@ -75,13 +76,14 @@ function SignupPage(props) {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <br />
       <p>Already have account?</p>
-      <Link to="/login">
+      <NavLink to="/login"> Log in</NavLink>
+      {/* <NavLink>
         <div class="ta-c padT150 padB150">
           <button class="button accept-btn" onClick="addAnimation2()">
             Log in
           </button>
         </div>
-      </Link>
+      </NavLink> */}
       <img src={tree} className="full-width-img" alt="wave-placeholder" />
     </div>
   );

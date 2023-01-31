@@ -60,13 +60,14 @@ const About = () => {
       )}
       {!isLoggedIn && (
         <>
-          <NavLink to="/signup">
+          <NavLink to="/signup">Try it now</NavLink>
+          {/* <NavLink to="/signup">
             <div class="ta-c padT150 padB150">
               <button class="button accept-btn" onClick="addAnimation2()">
                 Try it now
               </button>
             </div>
-          </NavLink>
+          </NavLink> */}
         </>
       )}
     </div>

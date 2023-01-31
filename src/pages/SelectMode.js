@@ -8,9 +8,9 @@ const SelectMode = () => {
       <TopicCard />
 
       <NavLink to="/addquestion">
-        <button className="button accept-btn-create" onClick="addAnimation2()">
-          create new questions
-        </button>
+        {/* <button className="button accept-btn-create" onClick="addAnimation2()"> */}
+        create new questions
+        {/* </button> */}
       </NavLink>
     </div>
   );
