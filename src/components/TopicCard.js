@@ -5,27 +5,39 @@ const TopicCard = () => {
     <div>
       <section>
         <NavLink to="/question/self-care">
-          <button>self-care</button>
+          <button className="button accept-btn" onClick="addAnimation2()">
+            self-care
+          </button>
         </NavLink>
 
         <NavLink to="/question/smoking">
-          <button>smoking</button>
+          <button className="button accept-btn" onClick="addAnimation2()">
+            smoking
+          </button>
         </NavLink>
 
-        <NavLink to="/">
-          <button>job</button>
+        <NavLink to="/question/job">
+          <button className="button accept-btn" onClick="addAnimation2()">
+            job
+          </button>
         </NavLink>
 
-        <NavLink to="/">
-          <button>motivation</button>
+        <NavLink to="/question/motivation">
+          <button className="button accept-btn" onClick="addAnimation2()">
+            motivation
+          </button>
         </NavLink>
 
-        <NavLink to="/">
-          <button>eating</button>
+        <NavLink to="/question/eating">
+          <button className="button accept-btn" onClick="addAnimation2()">
+            eating
+          </button>
         </NavLink>
 
-        <NavLink to="/">
-          <button>relationship</button>
+        <NavLink to="/question/relationships">
+          <button className="button accept-btn" onClick="addAnimation2()">
+            relationships
+          </button>
         </NavLink>
       </section>
     </div>

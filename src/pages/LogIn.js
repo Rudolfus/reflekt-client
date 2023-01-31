@@ -63,7 +63,7 @@ function LogIn(props) {
       <p>Don't have an account yet?</p>
       <Link to="/signup">
         <div class="ta-c padT150 padB150">
-          <button class="button accept-btn" onclick="addAnimation2()">
+          <button class="button accept-btn" onClick="addAnimation2()">
             Try it now
           </button>
         </div>

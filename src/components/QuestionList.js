@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import QuestionCard from "./TopicDetails";
-import AddAnswer from "../pages/AddAnswer";
-import { useParams } from "react-router-dom";
-//{ topic }
+import { useParams, NavLink } from "react-router-dom";
+
 const QuestionList = () => {
   const { topic } = useParams();
   const [allQuestions, setAllQuestions] = useState([]);
@@ -20,10 +19,6 @@ const QuestionList = () => {
     getAllQuestions();
     setLoading(false);
   }, []);
-
-  const handleClick = () => {
-    return <AddAnswer topicChosen={topic} />;
-  };
 
   const filteredQuestions = allQuestions.filter((question) => {
     return question.topic === topic;
@@ -43,7 +38,11 @@ const QuestionList = () => {
           </div>
         );
       })}
-      <button onClick={handleClick}>choose this topic</button>
+      <NavLink to="/addanswer">
+        <button className="button accept-btn" onClick="addAnimation2()">
+          reflekt
+        </button>
+      </NavLink>
     </div>
   );
 };
