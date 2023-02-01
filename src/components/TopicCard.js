@@ -1,53 +1,33 @@
 import { NavLink } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 const TopicCard = () => {
   return (
     <div>
       <section>
-        <NavLink to="/question/self-care">
-          self-care
-          {/* <button className="button accept-btn" onClick="addAnimation2()">
-            self-care
-          </button> */}
-        </NavLink>
-
-        <NavLink to="/question/smoking">
-          smoking
-          {/* <button className="button accept-btn" onClick="addAnimation2()">
-            smoking
-          </button> */}
-        </NavLink>
-
-        <NavLink to="/question/job">
-          job
-          {/* <button className="button accept-btn" onClick="addAnimation2()">
-            job
-          </button> */}
-        </NavLink>
-
-        <NavLink to="/question/motivation">
+        <Button variant="light">
+          <NavLink to="/question/self-care">self-care</NavLink>
+        </Button>{" "}
+        <Button variant="light">
           {" "}
-          motivation
-          {/* <button className="button accept-btn" onClick="addAnimation2()">
-            motivation
-          </button> */}
-        </NavLink>
-
-        <NavLink to="/question/eating">
+          <NavLink to="/question/smoking">smoking</NavLink>
+        </Button>{" "}
+        <Button variant="light">
           {" "}
-          eating
-          {/* <button className="button accept-btn" onClick="addAnimation2()">
-            eating
-          </button> */}
-        </NavLink>
-
-        <NavLink to="/question/relationships">
+          <NavLink to="/question/job">job</NavLink>
+        </Button>{" "}
+        <Button variant="light">
           {" "}
-          relationships
-          {/* <button className="button accept-btn" onClick="addAnimation2()">
-            relationships
-          </button> */}
-        </NavLink>
+          <NavLink to="/question/motivation"> motivation</NavLink>
+        </Button>{" "}
+        <Button variant="light">
+          {" "}
+          <NavLink to="/question/eating"> eating</NavLink>
+        </Button>{" "}
+        <Button variant="light">
+          {" "}
+          <NavLink to="/question/relationships"> relationships</NavLink>
+        </Button>{" "}
       </section>
     </div>
   );

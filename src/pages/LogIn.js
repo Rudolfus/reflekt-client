@@ -33,6 +33,7 @@ function LogIn() {
     e.preventDefault();
     const requestBody = { email, password };
 
+    console.log(".........................");
     axios
       .post(`${process.env.REACT_APP_API_URL}/auth/login`, requestBody)
       .then((response) => {
@@ -54,60 +55,69 @@ function LogIn() {
   return (
     <MDBContainer fluid>
       <MDBCard className="text-black m-5" style={{ borderRadius: "25px" }}>
-        <MDBCardBody onSubmit={handleLoginSubmit}>
-          <MDBRow>
-            <MDBCol
-              md="10"
-              lg="6"
-              className="order-2 order-lg-1 d-flex flex-column align-items-center"
-            >
-              <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                Log In
-              </p>
+        <MDBCardBody>
+          <form onSubmit={handleLoginSubmit}>
+            <MDBRow>
+              <MDBCol
+                md="10"
+                lg="6"
+                className="order-2 order-lg-1 d-flex flex-column align-items-center"
+              >
+                <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                  Log In
+                </p>
 
-              <div className="d-flex flex-row align-items-center mb-4">
-                <MDBIcon fas icon="envelope me-3" size="lg" />
-                <MDBInput
-                  label="Your Email"
-                  name="email"
-                  value={email}
-                  onChange={handleEmail}
-                  id="form2"
-                  type="email"
-                />
-              </div>
+                <div className="d-flex flex-row align-items-center mb-4">
+                  <MDBIcon fas icon="envelope me-3" size="lg" />
+                  <MDBInput
+                    label="Your Email"
+                    name="email"
+                    value={email}
+                    onChange={handleEmail}
+                    id="form2"
+                    type="email"
+                  />
+                </div>
 
-              <div className="d-flex flex-row align-items-center mb-4">
-                <MDBIcon fas icon="lock me-3" size="lg" />
-                <MDBInput
-                  label="Password"
-                  name="password"
-                  value={password}
-                  onChange={handlePassword}
-                  id="form3"
-                  type="password"
-                />
-              </div>
+                <div className="d-flex flex-row align-items-center mb-4">
+                  <MDBIcon fas icon="lock me-3" size="lg" />
+                  <MDBInput
+                    label="Password"
+                    name="password"
+                    value={password}
+                    onChange={handlePassword}
+                    id="form3"
+                    type="password"
+                  />
+                </div>
 
-              <MDBBtn type="submit" className="mb-4" color="warning" size="lg">
-                Log in
-              </MDBBtn>
+                <MDBBtn
+                  type="submit"
+                  className="mb-4"
+                  color="warning"
+                  size="lg"
+                >
+                  Log in
+                </MDBBtn>
 
-              {errorMessage && <p className="error-message">{errorMessage}</p>}
-              <br />
-              <p>Don't have an account yet?</p>
+                {errorMessage && (
+                  <p className="error-message">{errorMessage}</p>
+                )}
+                <br />
+                <p>Don't have an account yet?</p>
 
-              <NavLink to="/signup">Try it now</NavLink>
-            </MDBCol>
+                <NavLink to="/signup">Try it now</NavLink>
+              </MDBCol>
 
-            <MDBCol
-              md="10"
-              lg="6"
-              className="order-1 order-lg-2 d-flex align-items-center"
-            >
-              <MDBCardImage src={tree} fluid />
-            </MDBCol>
-          </MDBRow>
+              <MDBCol
+                md="10"
+                lg="6"
+                className="order-1 order-lg-2 d-flex align-items-center"
+              >
+                <MDBCardImage src={tree} fluid />
+              </MDBCol>
+            </MDBRow>
+          </form>
         </MDBCardBody>
       </MDBCard>
     </MDBContainer>

@@ -2,6 +2,10 @@ import "../App.css";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Card from "react-bootstrap/Card";
+import tree from "../assets/R-Illu-3-baum.png";
 
 const AddSingleQuestion = () => {
   const [question, setQuestion] = useState("");
@@ -9,6 +13,9 @@ const AddSingleQuestion = () => {
   const [isPublic, setIsPublic] = useState(true);
 
   const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,34 +43,51 @@ const AddSingleQuestion = () => {
   return (
     <div>
       <h3>Create a question</h3>
-      <br />
-      <form onSubmit={handleSubmit}>
-        <label>Your question:</label>
-        <input
-          type="text"
-          name="question"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-        />
-        <br />
-        <label>Topic:</label>
-        <textarea
-          type="text"
-          name="topic"
-          value={topic}
-          onChange={(e) => setTopic(e.target.value)}
-        />
-        <br />
-        <label>Make it private:</label>
-        <input
-          type="checkbox"
-          name="privacy"
-          value={isPublic}
-          onClick={(e) => setIsPublic(!isPublic)}
-        />
-        <br />
-        <button type="submit">Submit</button>
-      </form>
+      <Card style={{ width: "18rem" }}>
+        <Card.Img variant="top" src={tree} />
+        <Card.Body>
+          <Card.Title>Your Question</Card.Title>
+
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="text"
+                name="question"
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
+                placeholder="Enter question"
+              />
+              <Form.Text className="text-muted">
+                Try to create an open question using "what", "how", "when" etc.
+              </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Topic</Form.Label>
+              <Form.Control
+                type="text"
+                name="topic"
+                value={topic}
+                onChange={(e) => setTopic(e.target.value)}
+                placeholder="Enter a topic"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+              <Form.Check
+                type="checkbox"
+                name="privacy"
+                value={isPublic}
+                onClick={(e) => setIsPublic(!isPublic)}
+                label="This is private"
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Create
+            </Button>
+          </Form>
+        </Card.Body>
+      </Card>
     </div>
   );
 };

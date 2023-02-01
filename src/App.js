@@ -12,7 +12,7 @@ import LogIn from "./pages/LogIn";
 import QuestionList from "./components/QuestionList";
 ///////////////////////////////////////////
 import AddSingleQuestion from "./components/AddSingleQuestion";
-import GetAllQuestions from "./components/GetAllQuestions";
+import GetAllQuestions from "./components/GetAllQuestionsOfATopic";
 import GetSingleQuestion from "./components/GetSingleQuestion";
 import EditQuestion from "./components/EditQuestion";
 ///////////////////////////////////////////

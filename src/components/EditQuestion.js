@@ -37,7 +37,7 @@ function EditQuestion() {
         requestBody
       )
       .then((response) => {
-        // Once the request is resolved successfully and the project
+        // Once the request is resolved successfully and the question
         // is updated we navigate back to the details page
         navigate(`/questions/${questionId}`);
       });

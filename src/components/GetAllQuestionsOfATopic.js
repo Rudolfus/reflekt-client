@@ -1,7 +1,14 @@
 import "../App.css";
 import Spinner from 'react-bootstrap/Spinner';
+import { useParams } from "react-router-dom";
 
-const GetAllQuestions = ({ questionsArr, isLoading }) => {
+const GetAllQuestionsOfATopic = ({ questionsArr, isLoading }) => {
+  const { topic } = useParams();
+
+  const filteredQuestions = questionsArr.filter((filteredQuestionArr) => {
+    return filteredQuestionArr.topic === topic;
+  });
+
   if (isLoading) {
     return (
       <div>
@@ -16,7 +23,7 @@ const GetAllQuestions = ({ questionsArr, isLoading }) => {
     <div>
       {questionsArr === null
         ? "loading questions ..."
-        : questionsArr.map((onlyOneQue) => {
+        : filteredQuestions.map((onlyOneQue) => {
             return (
               <div key={onlyOneQue._id}>
                 <div>
@@ -31,4 +38,4 @@ const GetAllQuestions = ({ questionsArr, isLoading }) => {
   );
 };
 
-export default GetAllQuestions;
+export default GetAllQuestionsOfATopic;

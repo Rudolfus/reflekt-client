@@ -17,8 +17,8 @@ const AddQuestion = ({ getAllQuestions }) => {
         setTopic("");
         setPrivacy();
 
-        /* we are refreshing the list of projects and dynamically
-        fetching data each time we create a new project using the form */
+        /* we are refreshing the list of questions and dynamically
+        fetching data each time we create a new set of question using the form */
         getAllQuestions();
       })
       .catch((error) => console.log(error));
