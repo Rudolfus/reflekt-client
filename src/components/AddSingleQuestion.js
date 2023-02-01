@@ -21,18 +21,15 @@ const AddSingleQuestion = () => {
       .post(`${process.env.REACT_APP_API_URL}/api/questions`, requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
-      .then((response) => {
+      .then(() => {
         // Reset the state
         setQuestion("");
         setTopic("");
         setIsPublic();
-        //navigate("/myreflekt");
+        navigate("/myreflekt");
       })
       .catch((error) =>
-        console.log(
-          "Sorry, there was an error creating your question.",
-          error.data
-        )
+        console.log("Sorry, there was an error creating your question.", error)
       );
   };
 

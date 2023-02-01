@@ -1,11 +1,13 @@
 import "../App.css";
+import Spinner from "react-bootstrap/Spinner";
 
 const GetAllAnswers = ({ answersArr, isLoading }) => {
   if (isLoading) {
     return (
       <div>
-        Still waiting for second state update of the array so that it can be
-        displayed.
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
       </div>
     );
   }

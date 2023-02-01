@@ -4,6 +4,17 @@ import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import tree from "../assets/R-Illu-3-baum.png";
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBInput,
+  MDBIcon,
+} from "mdb-react-ui-kit";
 
 function LogIn() {
   const [email, setEmail] = useState("");
@@ -41,35 +52,65 @@ function LogIn() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <MDBContainer fluid>
+      <MDBCard className="text-black m-5" style={{ borderRadius: "25px" }}>
+        <MDBCardBody onSubmit={handleLoginSubmit}>
+          <MDBRow>
+            <MDBCol
+              md="10"
+              lg="6"
+              className="order-2 order-lg-1 d-flex flex-column align-items-center"
+            >
+              <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                Log In
+              </p>
 
-      <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+              <div className="d-flex flex-row align-items-center mb-4">
+                <MDBIcon fas icon="envelope me-3" size="lg" />
+                <MDBInput
+                  label="Your Email"
+                  name="email"
+                  value={email}
+                  onChange={handleEmail}
+                  id="form2"
+                  type="email"
+                />
+              </div>
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+              <div className="d-flex flex-row align-items-center mb-4">
+                <MDBIcon fas icon="lock me-3" size="lg" />
+                <MDBInput
+                  label="Password"
+                  name="password"
+                  value={password}
+                  onChange={handlePassword}
+                  id="form3"
+                  type="password"
+                />
+              </div>
 
-        <button type="submit">Login</button>
-      </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <br />
-      <p>Don't have an account yet?</p>
+              <MDBBtn type="submit" className="mb-4" color="warning" size="lg">
+                Log in
+              </MDBBtn>
 
-      <NavLink to="/signup">Try it now</NavLink>
-      {/* <div class="ta-c padT150 padB150">
-        <button class="button accept-btn" onClick="addAnimation2()">
-          <Link to="/signup">Try it now</Link>
-        </button>
-      </div> */}
-      <img src={tree} className="full-width-img" alt="wave-placeholder" />
-    </div>
+              {errorMessage && <p className="error-message">{errorMessage}</p>}
+              <br />
+              <p>Don't have an account yet?</p>
+
+              <NavLink to="/signup">Try it now</NavLink>
+            </MDBCol>
+
+            <MDBCol
+              md="10"
+              lg="6"
+              className="order-1 order-lg-2 d-flex align-items-center"
+            >
+              <MDBCardImage src={tree} fluid />
+            </MDBCol>
+          </MDBRow>
+        </MDBCardBody>
+      </MDBCard>
+    </MDBContainer>
   );
 }
 

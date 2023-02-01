@@ -11,12 +11,15 @@ const AddAnswer = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const body = {
-      answer: answer,
-      isPublic: isPublic,
-    };
+
+    const body = { answer, isPublic };
+
+    const storedToken = localStorage.getItem("authToken");
+
     axios
-      .post(`${process.env.REACT_APP_API_URL}/api/answers`, body)
+      .post(`${process.env.REACT_APP_API_URL}/api/answers`, body, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then(() => {
         setAnswer("");
         setIsPublic();

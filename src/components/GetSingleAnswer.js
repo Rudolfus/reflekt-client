@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
 
 const GetSingleAnswer = ({ answersArr, isLoading }) => {
   const { answerId } = useParams();
@@ -6,8 +7,12 @@ const GetSingleAnswer = ({ answersArr, isLoading }) => {
   if (isLoading) {
     return (
       <div>
-        Still waiting for second state update of the array so that it can be
-        displayed.
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">
+            Still waiting for second state update of the array so that it can be
+            displayed.
+          </span>
+        </Spinner>
       </div>
     );
   }
