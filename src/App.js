@@ -24,10 +24,13 @@ import EditAnswer from "./components/EditAnswer";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import background from "../src/assets/background.jpg";
 
 function App() {
   const [questionsArr, setQuestionsArr] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  // Get the token from the localStorage
+  const storedToken = localStorage.getItem("authToken");
 
   useEffect(() => {
     listQuestions();
@@ -35,7 +38,9 @@ function App() {
 
   const listQuestions = () => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api/questions`)
+      .get(`${process.env.REACT_APP_API_URL}/api/questions`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         setQuestionsArr(response.data);
         setIsLoading(false);
@@ -53,7 +58,9 @@ function App() {
 
   const listAnswers = () => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api/answers`)
+      .get(`${process.env.REACT_APP_API_URL}/api/answers`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         setAnswersArr(response.data);
         setIsLoading(false);
@@ -64,7 +71,15 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        backgroundImage: `url(${background})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+    >
       <Navbar />
 
       <Routes>

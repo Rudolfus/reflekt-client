@@ -12,21 +12,27 @@ const AddSingleQuestion = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const body = {
-      question: question,
-      topic: topic,
-      isPublic: isPublic,
-    };
+    const requestBody = { question, topic, isPublic };
+
+    // Get the token from the localStorage
+    const storedToken = localStorage.getItem("authToken");
+
     axios
-      .post(`${process.env.REACT_APP_API_URL}/api/questions`, body)
-      .then(() => {
+      .post(`${process.env.REACT_APP_API_URL}/api/questions`, requestBody, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        // Reset the state
         setQuestion("");
         setTopic("");
         setIsPublic();
-        navigate("/myreflekt");
+        //navigate("/myreflekt");
       })
       .catch((error) =>
-        console.log("Sorry, there was an error creating your question.", error)
+        console.log(
+          "Sorry, there was an error creating your question.",
+          error.data
+        )
       );
   };
 

@@ -3,12 +3,13 @@ import QuestionCarrousel from "../components/QuestionCarrousel";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import Carousel from "react-bootstrap/Carousel";
 
 const HomePage = () => {
   const { isLoggedIn } = useContext(AuthContext);
   return (
     <div>
-      <h1>Change starts in the mind.</h1>
+      <h1 className="welcome-heading">Change starts in the mind.</h1>
       {/* landing page */}
       <InfoBox />
       <QuestionCarrousel />
@@ -18,22 +19,24 @@ const HomePage = () => {
       {isLoggedIn && (
         <>
           {/* <div class="ta-c padT150 padB150"> */}
-            <NavLink to="/myreflekt">
-              {/* <div class="ta-c padT150 padB150">
+          <NavLink to="/myreflekt" className="button accept-btn">
+            {/* <div class="ta-c padT150 padB150">
                 <button class="button accept-btn" onClick="addAnimation2()"> */}
-              Start reflekting
-              {/* </button> */}
-              {/* </div> */}
-            </NavLink>
+            Start reflekting
+            {/* </button> */}
+            {/* </div> */}
+          </NavLink>
           {/* </div> */}
-        {/* </> */}
+        </>
       )}
       {!isLoggedIn && (
         <>
-          <NavLink to="/signup">Try it now</NavLink>
+          <NavLink to="/signup" className="button accept-btn-create:hover">
+            Try it now
+          </NavLink>
           {/* <NavLink to="/signup">
             <div class="ta-c padT150 padB150">
-              <button class="button accept-btn" onClick="addAnimation2()">
+              <button className="button accept-btn" onClick="addAnimation2()">
                 Try it now
               </button>
             </div>

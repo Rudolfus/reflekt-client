@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import tree from "../assets/R-Illu-3-baum.png";
 
-function LogIn(props) {
+function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);

@@ -9,41 +9,48 @@ const Articles = () => {
 
   return (
     <div>
-      <h1>The Science behind Reflekt</h1>
-      <p>
-        Our goal is to support your develpoment — but the only way to know if
-        we’re truly accomplishing that is to measure, test, and study it. That’s
-        where our research comes in.
-      </p>
-
-      <h2>Our Approach</h2>
-      <p>
-        Reflekt can have numerous benefits for you. It can serve as a tool for
-        self-reflection, helping you to better understand your thoughts and
-        emotions. Reflekt can also be used as a means of tracking personal
-        growth and progress over time. Also, Reflekt can also be a useful tool
-        for problem-solving and decision-making, as it allows you to organize
-        your thoughts and ideas in a clear and concise manner. Additionally,
-        Reflekt can be a therapeutic tool to help process emotions and cope with
-        stress. Overall, Reflekt can be a valuable tool for personal development
-        and self-care.
-      </p>
-      <iframe
-        src="https://www.nytimes.com/svc/oembed/html/?url=https%3A%2F%2Fwww.nytimes.com%2F2019%2F01%2F23%2Flearning%2Fempathy-and-resilience-responsibility-and-self-care-resources-for-social-and-emotional-learning-from-the-new-york-times.html"
-        allowtransparency="true"
-        title="Empathy and Resilience, Responsibility and Self-Care: Resources for Social and Emotional Learning From The New York Times"
-      ></iframe>
-
-      <h2>The Benefits</h2>
-      <p>
-        Some numbers and statistics abobut positive psychologoy and journaling
-        <br />
-        There are thousands of studies that have shown mindfulness and
-        journaling can positively impact mental and physical health, whether
-        it’s by reducing stress, improving sleep, increasing focus, or improving
-        relationships. The proof is in the science: Reflekt can make a big
-        impact on people’s lives — and it doesn’t take long to see the benefits.
-      </p>
+      <div className="homepage-text-block">
+        <h1>The Science behind Reflekt</h1>
+        <p>
+          Our goal is to support your develpoment — but the only way to know if
+          we’re truly accomplishing that is to measure, test, and study it.
+          That’s where our research comes in.
+        </p>
+      </div>
+      <div className="homepage-text-block">
+        <h2>Our Approach</h2>
+        <p>
+          Reflekt can have numerous benefits for you. It can serve as a tool for
+          self-reflection, helping you to better understand your thoughts and
+          emotions. Reflekt can also be used as a means of tracking personal
+          growth and progress over time. Also, Reflekt can also be a useful tool
+          for problem-solving and decision-making, as it allows you to organize
+          your thoughts and ideas in a clear and concise manner. Additionally,
+          Reflekt can be a therapeutic tool to help process emotions and cope
+          with stress. Overall, Reflekt can be a valuable tool for personal
+          development and self-care.
+        </p>
+      </div>
+      <div>
+        <iframe
+          src="https://www.nytimes.com/svc/oembed/html/?url=https%3A%2F%2Fwww.nytimes.com%2F2019%2F01%2F23%2Flearning%2Fempathy-and-resilience-responsibility-and-self-care-resources-for-social-and-emotional-learning-from-the-new-york-times.html"
+          allowtransparency="true"
+          title="Empathy and Resilience, Responsibility and Self-Care: Resources for Social and Emotional Learning From The New York Times"
+        ></iframe>
+      </div>
+      <div className="homepage-text-block">
+        <h2>The Benefits</h2>
+        <p>
+          Some numbers and statistics abobut positive psychologoy and journaling
+          <br />
+          There are thousands of studies that have shown mindfulness and
+          journaling can positively impact mental and physical health, whether
+          it’s by reducing stress, improving sleep, increasing focus, or
+          improving relationships. The proof is in the science: Reflekt can make
+          a big impact on people’s lives — and it doesn’t take long to see the
+          benefits.
+        </p>
+      </div>
       <h2>Tackle Dissatisfaction</h2>
       <YoutubeEmbed embedId="WPPPFqsECz0?modestbranding=1" />
       <h2>Positive Thinking Works Even When It Fails</h2>

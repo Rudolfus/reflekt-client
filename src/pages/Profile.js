@@ -13,7 +13,7 @@ const Profile = () => {
       })
       .then((response) => {
         const user = response.data;
-        console.log(user);
+        // console.log(user);
 
         setIsLoading(false);
         setUserProfile(user);
@@ -39,7 +39,12 @@ const Profile = () => {
       ) : (
         <div>
           <div>
-            <img src={userProfile.image} alt="profile-pic" />
+            <img
+              src={userProfile.image}
+              width="100"
+              height="100"
+              alt="profile-pic"
+            />
             <h1>{userProfile.name}</h1>
             <p>Acount & Settings</p>
             <h3>{userProfile.questions.length} questions</h3>
