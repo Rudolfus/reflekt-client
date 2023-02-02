@@ -3,6 +3,7 @@ import tree from "../assets/R-Illu-3-baum.png";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import { MDBBtn } from "mdb-react-ui-kit";
 
 const About = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -47,28 +48,17 @@ const About = () => {
       </div>
       {isLoggedIn && (
         <>
-          <div class="ta-c padT150 padB150">
-            <NavLink>Start reflekting</NavLink>
-            {/* <NavLink to="/myreflekt">
-              <div class="ta-c padT150 padB150">
-                <button class="button accept-btn" onClick="addAnimation2()">
-                  Start reflekting
-                </button>
-              </div>
-            </NavLink> */}
-          </div>
+          <MDBBtn color="warning" size="lg" className="me-2 start-try" active>
+            <NavLink to="/start">Start reflekting</NavLink>
+          </MDBBtn>
         </>
       )}
+
       {!isLoggedIn && (
         <>
-          <NavLink to="/signup">Try it now</NavLink>
-          {/* <NavLink to="/signup">
-            <div class="ta-c padT150 padB150">
-              <button class="button accept-btn" onClick="addAnimation2()">
-                Try it now
-              </button>
-            </div>
-          </NavLink> */}
+          <MDBBtn color="warning" size="lg" className="me-2 start-try" active>
+            <NavLink to="/signup">Try it now</NavLink>
+          </MDBBtn>
         </>
       )}
     </div>

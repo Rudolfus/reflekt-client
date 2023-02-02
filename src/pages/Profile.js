@@ -1,11 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
+import {
+  MDBCol,
+  MDBContainer,
+  MDBRow,
+  MDBCard,
+  MDBCardTitle,
+  MDBCardBody,
+  MDBCardImage,
+} from "mdb-react-ui-kit";
+import logo from "../assets/logo.png";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+import GetSingleAnswer from "../components/GetSingleAnswer";
 
-const Profile = () => {
-  const [userProfile, setUserProfile] = useState();
+const Profile = ({ GetAllQuestions }) => {
+  const [userProfile, setUserProfile] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const storedToken = localStorage.getItem("authToken");
+  const [answersArr, setAnswersArr] = useState();
 
   useEffect(() => {
     axios
@@ -14,15 +30,29 @@ const Profile = () => {
       })
       .then((response) => {
         const user = response.data;
-        // console.log(user);
-
-        setIsLoading(false);
+        console.log("....................", user);
         setUserProfile(user);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
+  const getQuestionsOfUser = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api/user`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((user) => {
+        setUserProfile(user);
+        console.log(user);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log("error getting user details from DB", err);
+      });
+  };
 
   if (isLoading) {
     return (
@@ -39,31 +69,77 @@ const Profile = () => {
 
   return (
     <div>
+      {/* when the user is loaded and therefore not null, we render the info*/}
       {userProfile === null ? (
         "loading answers ..."
       ) : (
         <div>
           <div>
-            <img
-              src={userProfile.image}
-              width="100"
-              height="100"
-              alt="profile-pic"
-            />
-            <h1>{userProfile.name}</h1>
-            <p>Acount & Settings</p>
-            <h3>{userProfile.questions.length} questions</h3>
-            <p>Total questions following</p>
+            <MDBContainer>
+              <MDBRow className="justify-content-center">
+                <MDBCol md="9" lg="7" xl="5" className="mt-5">
+                  <MDBCard style={{ borderRadius: "15px" }}>
+                    <MDBCardBody className="p-4">
+                      <div className="d-flex text-black">
+                        <div className="flex-shrink-1">
+                          <MDBCardImage
+                            style={{ width: "180px", borderRadius: "10px" }}
+                            // src={userProfile.image}
+                            src={logo}
+                            alt="Generic placeholder image"
+                            fluid
+                          />
+                        </div>
+                        <div className="flex-grow-1 ms-3">
+                          <MDBCardTitle>{userProfile?.name}</MDBCardTitle>
+                          <div
+                            className="d-flex justify-content-start rounded-3 p-2 mb-2"
+                            style={{ backgroundColor: "rgb(248, 238, 200);" }}
+                          >
+                            <div>
+                              <p className="small text-muted mb-1">
+                                Questions <br />
+                                following
+                              </p>
+                              <p className="mb-0">
+                                {userProfile?.questions.length}
+                              </p>
+                            </div>
+                            <div className="px-3">
+                              <p className="small text-muted mb-1">Answers</p>
+                              <p className="mb-0">0</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBCol>
+              </MDBRow>
+            </MDBContainer>
+            {userProfile.questions.map((question) => {
+              return (
+                <div className="userQuestions">
+                  <Card>
+                    <Card.Header>Questions following</Card.Header>
+                    <Card.Body>
+                      <Card.Title>{question.topic}</Card.Title>
+                      <Card.Text>{question.question}</Card.Text>
+                      <div className="profile-buttons">
+                        {/* <Button variant="warning">
+                          <Link to={`/answers/${answer._id}`}>See answers</Link>
+                        </Button> */}
+
+                        <Button variant="warning">
+                          <Link to={`/editquestion/${question._id}`}>Edit</Link>
+                        </Button>
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </div>
+              );
+            })}
           </div>
-          {/* <section>
-            <h4>{userProfile.name}</h4>
-            <button>edit</button>
-            <hr></hr>
-            <h4>{userProfile.email}</h4>
-            <button>edit</button>
-            <hr></hr>
-          </section> */}
-          <button>delete</button>
         </div>
       )}
     </div>

@@ -12,7 +12,12 @@ const NavbarNew = () => {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <Navbar bg="light" variant="light" sticky="top" expand="lg">
+    <Navbar
+      bg="light"
+      variant="light"
+      sticky="top"
+      expand={"sm" | "md" | "lg" | "xl" | "xxl"}
+    >
       <Container>
         <Navbar.Brand as={Link} to="/">
           <img

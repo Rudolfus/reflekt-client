@@ -2,9 +2,12 @@ import "../App.css";
 import Spinner from 'react-bootstrap/Spinner';
 import { useParams } from "react-router-dom";
 
+
+// getting all the questions as an array
 const GetAllQuestionsOfATopic = ({ questionsArr, isLoading }) => {
   const { topic } = useParams();
 
+  // filter the array according to their topic (s. model)
   const filteredQuestions = questionsArr.filter((filteredQuestionArr) => {
     return filteredQuestionArr.topic === topic;
   });
@@ -21,7 +24,7 @@ const GetAllQuestionsOfATopic = ({ questionsArr, isLoading }) => {
 
   return (
     <div>
-      {questionsArr === null
+      {filteredQuestions === null
         ? "loading questions ..."
         : filteredQuestions.map((onlyOneQue) => {
             return (

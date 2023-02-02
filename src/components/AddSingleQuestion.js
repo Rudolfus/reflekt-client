@@ -41,9 +41,9 @@ const AddSingleQuestion = () => {
   };
 
   return (
-    <div>
-      <h3>Create a question</h3>
-      <Card style={{ width: "18rem" }}>
+    <div className="createQuestion">
+      <h3 className="articles-heading">Create a question</h3>
+      <Card style={{ width: "18rem" }} className="createQuestion">
         <Card.Img variant="top" src={tree} />
         <Card.Body>
           <Card.Title>Your Question</Card.Title>
@@ -82,7 +82,7 @@ const AddSingleQuestion = () => {
                 label="This is private"
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="warning" type="submit">
               Create
             </Button>
           </Form>

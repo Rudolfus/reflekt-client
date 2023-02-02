@@ -77,17 +77,26 @@ function App() {
         backgroundImage: `url(${background})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        width: "100vw",
       }}
     >
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage Footer={<Footer />} />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/about" element={<About />} />
         <Route path="/start" element={<SelectMode />} />
-        <Route path="/myreflekt" element={<Profile />} />
+        <Route
+          path="/myreflekt"
+          element={
+            <Profile
+              GetAllQuestions={GetAllQuestions}
+              GetSingleAnswer={GetSingleAnswer}
+            />
+          }
+        />
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
 
@@ -115,7 +124,11 @@ function App() {
         <Route
           path="/editquestion/:questionId"
           element={
-            <EditQuestion questionsArr={questionsArr} isLoading={isLoading} />
+            <EditQuestion
+              questionsArr={questionsArr}
+              isLoading={isLoading}
+              listQuestions={listQuestions}
+            />
           }
         />
         <Route
@@ -141,7 +154,6 @@ function App() {
           element={<EditAnswer answersArr={answersArr} isLoading={isLoading} />}
         />
       </Routes>
-      <Footer />
     </div>
   );
 }

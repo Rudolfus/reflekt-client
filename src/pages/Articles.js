@@ -3,32 +3,29 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import "../App.css";
 import YoutubeEmbed from "../components/YoutubeEmbed";
+import { MDBBtn } from "mdb-react-ui-kit";
 
 const Articles = () => {
   const { isLoggedIn } = useContext(AuthContext);
 
   return (
     <div>
-      <div className="homepage-text-block">
-        <h1>The Science behind Reflekt</h1>
+      <div className="articles-text-block">
+        <h1 className="articles-heading">The Science behind Reflekt</h1>
         <p>
-          Our goal is to support your develpoment — but the only way to know if
+          Our goal is to support your development — but the only way to know if
           we’re truly accomplishing that is to measure, test, and study it.
           That’s where our research comes in.
         </p>
       </div>
-      <div className="homepage-text-block">
-        <h2>Our Approach</h2>
+      <div className="articles-text-block">
+        <h1 className="articles-heading">Our Approach</h1>
         <p>
-          Reflekt can have numerous benefits for you. It can serve as a tool for
-          self-reflection, helping you to better understand your thoughts and
-          emotions. Reflekt can also be used as a means of tracking personal
-          growth and progress over time. Also, Reflekt can also be a useful tool
-          for problem-solving and decision-making, as it allows you to organize
-          your thoughts and ideas in a clear and concise manner. Additionally,
-          Reflekt can be a therapeutic tool to help process emotions and cope
-          with stress. Overall, Reflekt can be a valuable tool for personal
-          development and self-care.
+          Reflekt can serve as a tool for self-reflection, helping you to better
+          understand your thoughts and emotions. It can also be used as a means
+          of tracking personal growth and progress over time. Also, Reflekt can
+          be a useful tool for problem-solving and decision-making, as it allows
+          you to organize your thoughts and ideas in a clear and concise manner.
         </p>
       </div>
       <div>
@@ -38,8 +35,8 @@ const Articles = () => {
           title="Empathy and Resilience, Responsibility and Self-Care: Resources for Social and Emotional Learning From The New York Times"
         ></iframe>
       </div>
-      <div className="homepage-text-block">
-        <h2>The Benefits</h2>
+      <div className="articles-text-block">
+        <h1 className="articles-heading">The Benefits</h1>
         <p>
           Some numbers and statistics abobut positive psychologoy and journaling
           <br />
@@ -51,17 +48,27 @@ const Articles = () => {
           benefits.
         </p>
       </div>
-      <h2>Tackle Dissatisfaction</h2>
-      <YoutubeEmbed embedId="WPPPFqsECz0?modestbranding=1" />
-      <h2>Positive Thinking Works Even When It Fails</h2>
-      <YoutubeEmbed embedId="kixHAWx2mkc?modestbranding=1" />
-      <h2>Change Your Life – One Tiny Step at a Time</h2>
-      <YoutubeEmbed embedId="75d_29QWELk?modestbranding=1" />
-      <h2>Research</h2>
-      <h3>
+      <h1 className="articles-heading">Tackle Dissatisfaction</h1>
+      <div className="video">
+        <YoutubeEmbed embedId="WPPPFqsECz0?modestbranding=1" />
+      </div>
+      <h1 className="articles-heading">
+        Positive Thinking Works Even When It Fails
+      </h1>
+      <div className="video">
+        <YoutubeEmbed embedId="kixHAWx2mkc?modestbranding=1" />
+      </div>
+      <h1 className="articles-heading">
+        Change Your Life – One Tiny Step at a Time
+      </h1>
+      <div className="video">
+        <YoutubeEmbed embedId="75d_29QWELk?modestbranding=1" />
+      </div>
+      <h1 className="articles-heading">Research</h1>
+      <h2>
         "Positive Affect Journaling may be integrated into routine medical care
         to improve quality of life."
-      </h3>
+      </h2>
       <p>
         <a
           href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6305886/"
@@ -83,29 +90,20 @@ const Articles = () => {
         </a>
       </p>
       <br />
+
       {isLoggedIn && (
         <>
-          <div class="ta-c padT150 padB150">
-            <NavLink to="/myreflekt">
-              {/* <div class="ta-c padT150 padB150">
-                <button class="button accept-btn" onClick="addAnimation2()"> */}
-              Start reflekting
-              {/* </button>
-              </div> */}
-            </NavLink>
-          </div>
+          <MDBBtn color="warning" size="lg" className="me-2 start-try" active>
+            <NavLink to="/start">Start reflekting</NavLink>
+          </MDBBtn>
         </>
       )}
+
       {!isLoggedIn && (
         <>
-          <NavLink to="/signup">Try it now</NavLink>
-          {/* <NavLink to="/signup">
-            <div class="ta-c padT150 padB150">
-              <button class="button accept-btn" onClick="addAnimation2()">
-                Try it now
-              </button>
-            </div>
-          </NavLink> */}
+          <MDBBtn color="warning" size="lg" className="me-2 start-try" active>
+            <NavLink to="/signup">Try it now</NavLink>
+          </MDBBtn>
         </>
       )}
     </div>

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom"; //  <== IMPORT
+import { useParams, useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
-function EditQuestion() {
+function EditQuestion({ questionsArr, listQuestions }) {
   const [topic, setTopic] = useState("");
   const [question, setQuestion] = useState("");
   const [isPublic, setIsPublic] = useState(true);
@@ -10,11 +11,18 @@ function EditQuestion() {
   const { questionId } = useParams();
   const navigate = useNavigate();
 
+  // Get the token from the localStorage
+  const storedToken = localStorage.getItem("authToken");
+
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api/questions/${questionId}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/questions/${questionId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         const oneSingleQuestion = response.data;
+
+        console.log(response.data);
 
         setTopic(oneSingleQuestion.topic);
         setQuestion(oneSingleQuestion.question);
@@ -34,12 +42,14 @@ function EditQuestion() {
     axios
       .put(
         `${process.env.REACT_APP_API_URL}/api/questions/${questionId}`,
-        requestBody
+        requestBody,
+        { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
         // Once the request is resolved successfully and the question
         // is updated we navigate back to the details page
-        navigate(`/questions/${questionId}`);
+        listQuestions();
+        navigate("/myreflekt");
       });
   };
 
@@ -47,7 +57,9 @@ function EditQuestion() {
 
   const deleteQuestion = () => {
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/api/questions/${questionId}`)
+      .delete(`${process.env.REACT_APP_API_URL}/api/questions/${questionId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then(() => {
         navigate("/myreflekt");
       })
@@ -83,10 +95,14 @@ function EditQuestion() {
           onClick={(e) => setIsPublic(!isPublic)}
         />
 
-        <button type="submit">Update Question</button>
+        <Button variant="warning" type="submit">
+          Update Question
+        </Button>
       </form>
 
-      <button onClick={deleteQuestion}>Delete Question</button>
+      <Button onClick={deleteQuestion} variant="warning" type="submit">
+        Delete Question
+      </Button>
     </div>
   );
 }
