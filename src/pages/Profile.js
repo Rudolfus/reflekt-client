@@ -126,12 +126,14 @@ const Profile = ({ GetAllQuestions }) => {
                       <Card.Title>{question.topic}</Card.Title>
                       <Card.Text>{question.question}</Card.Text>
                       <div className="profile-buttons">
-                        {/* <Button variant="warning">
-                          <Link to={`/answers/${answer._id}`}>See answers</Link>
-                        </Button> */}
-
                         <Button variant="warning">
                           <Link to={`/editquestion/${question._id}`}>Edit</Link>
+                        </Button>
+                        <Button variant="warning">
+                          <Link to={`/editquestion/${question._id}`}></Link>
+                        </Button>
+                        <Button variant="warning">
+                          <Link to={`/answers/${}`}>Add an answer</Link>
                         </Button>
                       </div>
                     </Card.Body>
