@@ -28,7 +28,6 @@ const GetSingleAnswer = ({ answersArr, isLoading }) => {
     );
   }
 
-
   const oneSingleAnswer = answersArr.find((answerDetails) => {
     return answerDetails._id === answerId;
   });

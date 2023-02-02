@@ -1,7 +1,17 @@
 import "../App.css";
 import Spinner from "react-bootstrap/Spinner";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const GetAllAnswers = ({ answersArr, isLoading }) => {
+const GetAllAnswers = ({ answersArr, isLoading, questionsArr }) => {
+  const navigate = useNavigate();
+  const { Id } = useParams();
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
   if (isLoading) {
     return (
       <div>
@@ -12,25 +22,34 @@ const GetAllAnswers = ({ answersArr, isLoading }) => {
     );
   }
 
-  console.log(answersArr);
-  // const answersOfOneQue = answersArr.filter(
-  //   (answer) => answer.question === question._id
-  // );
-  // console.log(answersOfOneQue);
+  // compare both and return the matching elements
+  const answersOfOneQue = answersArr.filter((answer) => answer.question === Id);
+  // expected output: 3 matching answers to one question
+  console.log(answersOfOneQue);
 
   return (
     <div>
       {answersArr === null
         ? "loading answers ..."
-        : answersArr.map((onlyOneAnswer) => {
-            return (
-              <div key={onlyOneAnswer._id}>
+        : answersOfOneQue.map((answersOfOneQue) => {
+            if (answersOfOneQue.length === 0) {
+              return (
                 <div>
-                  <h4>answer: {onlyOneAnswer.answer}</h4>
+                  So far, you haven't answered this question.
+                  <Link to={`/addanswer/${Id}`}>Add an answer</Link>
                 </div>
-              </div>
-            );
+              );
+            } else {
+              return (
+                <div key={answersOfOneQue._id}>
+                  <div>
+                    <h4>answer: {answersOfOneQue.answer}</h4>
+                  </div>
+                </div>
+              );
+            }
           })}
+      <button onClick={goBack}>Back</button>
     </div>
   );
 };

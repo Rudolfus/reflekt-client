@@ -29,6 +29,7 @@ import background from "../src/assets/background.jpg";
 function App() {
   const [questionsArr, setQuestionsArr] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [answersArr, setAnswersArr] = useState();
   // Get the token from the localStorage
   const storedToken = localStorage.getItem("authToken");
 
@@ -49,8 +50,6 @@ function App() {
         console.log(e);
       });
   };
-
-  const [answersArr, setAnswersArr] = useState();
 
   useEffect(() => {
     listAnswers();
@@ -138,9 +137,13 @@ function App() {
           }
         />
         <Route
-          path="/answers"
+          path="/answers/:Id"
           element={
-            <GetAllAnswers answersArr={answersArr} isLoading={isLoading} />
+            <GetAllAnswers
+              questionsArr={questionsArr}
+              answersArr={answersArr}
+              isLoading={isLoading}
+            />
           }
         />
         <Route

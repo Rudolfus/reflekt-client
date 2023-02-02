@@ -33,7 +33,6 @@ function LogIn() {
     e.preventDefault();
     const requestBody = { email, password };
 
-    console.log(".........................");
     axios
       .post(`${process.env.REACT_APP_API_URL}/auth/login`, requestBody)
       .then((response) => {

@@ -12,16 +12,13 @@ import {
 } from "mdb-react-ui-kit";
 import logo from "../assets/logo.png";
 import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import { NavLink, Link } from "react-router-dom";
-import GetSingleAnswer from "../components/GetSingleAnswer";
 
-const Profile = ({ GetAllQuestions }) => {
+const Profile = ({ questionId }) => {
   const [userProfile, setUserProfile] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const storedToken = localStorage.getItem("authToken");
-  const [answersArr, setAnswersArr] = useState();
 
   useEffect(() => {
     axios
@@ -37,21 +34,6 @@ const Profile = ({ GetAllQuestions }) => {
         console.log(error);
       });
   }, []);
-
-  const getQuestionsOfUser = () => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/api/user`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((user) => {
-        setUserProfile(user);
-        console.log(user);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log("error getting user details from DB", err);
-      });
-  };
 
   if (isLoading) {
     return (
@@ -91,10 +73,7 @@ const Profile = ({ GetAllQuestions }) => {
                         </div>
                         <div className="flex-grow-1 ms-3">
                           <MDBCardTitle>{userProfile?.name}</MDBCardTitle>
-                          <div
-                            className="d-flex justify-content-start rounded-3 p-2 mb-2"
-                            style={{ backgroundColor: "rgb(248, 238, 200);" }}
-                          >
+                          <div className="d-flex justify-content-start rounded-3 p-2 mb-2">
                             <div>
                               <p className="small text-muted mb-1">
                                 Questions <br />
@@ -137,7 +116,9 @@ const Profile = ({ GetAllQuestions }) => {
                           </Link>
                         </Button>
                         <Button variant="warning">
-                          <Link to={`/answers/`}>See all answers</Link>
+                          <Link to={`/answers/${question._id}`}>
+                            See all answers
+                          </Link>
                         </Button>
                       </div>
                     </Card.Body>

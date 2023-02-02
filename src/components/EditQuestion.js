@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
-function EditQuestion({ questionsArr, listQuestions }) {
+function EditQuestion({ listQuestions }) {
   const [topic, setTopic] = useState("");
   const [question, setQuestion] = useState("");
   const [isPublic, setIsPublic] = useState(true);
@@ -21,8 +21,6 @@ function EditQuestion({ questionsArr, listQuestions }) {
       })
       .then((response) => {
         const oneSingleQuestion = response.data;
-
-        console.log(response.data);
 
         setTopic(oneSingleQuestion.topic);
         setQuestion(oneSingleQuestion.question);
