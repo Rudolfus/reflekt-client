@@ -14,7 +14,7 @@ import logo from "../assets/logo.png";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import GetSingleAnswer from "../components/GetSingleAnswer";
 
 const Profile = ({ GetAllQuestions }) => {
@@ -119,6 +119,9 @@ const Profile = ({ GetAllQuestions }) => {
             {userProfile.questions.map((question) => {
               return (
                 <div className="userQuestions">
+                  <Button variant="warning">
+                    <NavLink to="/addquestion">create new questions</NavLink>
+                  </Button>{" "}
                   <Card>
                     <Card.Header>Questions following</Card.Header>
                     <Card.Body>
@@ -132,6 +135,9 @@ const Profile = ({ GetAllQuestions }) => {
                           <Link to={`/addanswer/${question._id}`}>
                             Add an answer
                           </Link>
+                        </Button>
+                        <Button variant="warning">
+                          <Link to={`/answers/`}>See all answers</Link>
                         </Button>
                       </div>
                     </Card.Body>

@@ -12,6 +12,12 @@ const GetAllAnswers = ({ answersArr, isLoading }) => {
     );
   }
 
+  console.log(answersArr);
+  // const answersOfOneQue = answersArr.filter(
+  //   (answer) => answer.question === question._id
+  // );
+  // console.log(answersOfOneQue);
+
   return (
     <div>
       {answersArr === null

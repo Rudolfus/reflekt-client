@@ -100,7 +100,7 @@ function EditQuestion({ questionsArr, listQuestions }) {
         </Button>
       </form>
 
-      <Button onClick={deleteQuestion} variant="warning" type="submit">
+      <Button onClick={deleteQuestion} variant="danger" type="submit">
         Delete Question
       </Button>
     </div>
