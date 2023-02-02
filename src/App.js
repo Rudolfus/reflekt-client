@@ -132,7 +132,7 @@ function App() {
           }
         />
         <Route
-          path="/addanswer"
+          path="/addanswer/:questionId"
           element={
             <AddAnswer questionsArr={questionsArr} isLoading={isLoading} />
           }

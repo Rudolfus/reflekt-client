@@ -30,7 +30,6 @@ const Profile = ({ GetAllQuestions }) => {
       })
       .then((response) => {
         const user = response.data;
-        console.log("....................", user);
         setUserProfile(user);
         setIsLoading(false);
       })
@@ -130,10 +129,9 @@ const Profile = ({ GetAllQuestions }) => {
                           <Link to={`/editquestion/${question._id}`}>Edit</Link>
                         </Button>
                         <Button variant="warning">
-                          <Link to={`/editquestion/${question._id}`}></Link>
-                        </Button>
-                        <Button variant="warning">
-                          <Link to={`/answers/${}`}>Add an answer</Link>
+                          <Link to={`/addanswer/${question._id}`}>
+                            Add an answer
+                          </Link>
                         </Button>
                       </div>
                     </Card.Body>
