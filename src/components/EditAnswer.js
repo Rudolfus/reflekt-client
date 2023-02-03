@@ -1,7 +1,11 @@
+import "../App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Card from "react-bootstrap/Card";
+import pen from "../assets/pen.png";
 
 function EditAnswer() {
   const [answer, setAnswer] = useState("");
@@ -65,36 +69,44 @@ function EditAnswer() {
   ///////////////// delete an answer /////////////////
 
   return (
-    <div>
-      <h3>Edit the Answer</h3>
+<div>
+      <Card style={{ width: "18rem" }} className="createQuestion">
+        <Card.Img variant="top" src={pen} />
+        <Card.Body>
+          <Card.Title>Edit your Answer</Card.Title>
 
-      <form onSubmit={handleFormSubmit}>
-        <label>Answer:</label>
-        <textarea
-          name="answer"
+          <Form onSubmit={handleFormSubmit}>
+            <Form.Group className="mb-3">
+              <Form.Label>Topic</Form.Label>
+              <Form.Control
+                type="text"
+                name="answer"
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
-        />
+              />
+            </Form.Group>
 
-        <label>Make it private:</label>
-        <input
-          type="checkbox"
-          name="privacy"
-          checked={isPublic}
-          onClick={(e) => setIsPublic(!isPublic)}
-        />
-
-        <Button variant="warning" type="submit">
-          Update Question
-        </Button>
-      </form>
-
-      <Button onClick={deleteAnswer} variant="danger" type="submit">
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+              <Form.Check
+                type="checkbox"
+                name="privacy"
+                value={isPublic}
+                onClick={(e) => setIsPublic(!isPublic)}
+                label="This is private"
+              />
+            </Form.Group>
+            <Button variant="warning" type="submit">
+            Update Question
+            </Button>
+          </Form>
+          <Button onClick={deleteAnswer} variant="danger" type="submit">
         Delete Question
       </Button>
       <Button onClick={goBack} variant="warning">
         back
       </Button>
+        </Card.Body>
+      </Card>
     </div>
   );
 }

@@ -43,7 +43,7 @@ const SelectMode = ({ topic }) => {
 
   return (
     <div className="selectMode">
-      <div>
+      <div className="existingTopics">
         <Button variant="warning">
           <NavLink to="/addquestion">create new questions</NavLink>
         </Button>{" "}

@@ -1,7 +1,12 @@
+import "../App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+import Button from 'react-bootstrap/Button';
+import Form from "react-bootstrap/Form";
+import Card from "react-bootstrap/Card";
+import pen from "../assets/pen.png";
+
 
 function EditQuestion({ listQuestions }) {
   const [topic, setTopic] = useState("");
@@ -71,43 +76,52 @@ function EditQuestion({ listQuestions }) {
 
   return (
     <div>
-      <h3>Edit the Question</h3>
+      <Card style={{ width: "18rem" }} className="createQuestion">
+        <Card.Img variant="top" src={pen} />
+        <Card.Body>
+          <Card.Title>Edit your Question</Card.Title>
 
-      <form onSubmit={handleFormSubmit}>
-        <label>Topic:</label>
-        <input
-          type="text"
-          name="topic"
-          value={topic}
-          onChange={(e) => setTopic(e.target.value)}
-        />
+          <Form onSubmit={handleFormSubmit}>
+            <Form.Group className="mb-3">
+              <Form.Label>Topic</Form.Label>
+              <Form.Control
+                type="text"
+                name="topic"
+                value={topic}
+                onChange={(e) => setTopic(e.target.value)}
+              />
+            </Form.Group>
 
-        <label>Question:</label>
-        <textarea
-          name="question"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-        />
-
-        <label>Make it private:</label>
-        <input
-          type="checkbox"
-          name="privacy"
-          value={isPublic}
-          onClick={(e) => setIsPublic(!isPublic)}
-        />
-
-        <Button variant="warning" type="submit">
-          Update Question
-        </Button>
-      </form>
-
-      <Button onClick={deleteQuestion} variant="danger" type="submit">
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Question</Form.Label>
+              <Form.Control
+                type="text"
+                name="question"
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+              <Form.Check
+                type="checkbox"
+                name="privacy"
+                value={isPublic}
+                onClick={(e) => setIsPublic(!isPublic)}
+                label="This is private"
+              />
+            </Form.Group>
+            <Button variant="warning" type="submit">
+            Update Question
+            </Button>
+          </Form>
+          <Button onClick={deleteQuestion} variant="danger" type="submit">
         Delete Question
       </Button>
       <Button onClick={goBack} variant="warning">
         back
       </Button>
+        </Card.Body>
+      </Card>
     </div>
   );
 }

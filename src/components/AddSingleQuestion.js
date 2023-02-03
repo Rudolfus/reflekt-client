@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
-import tree from "../assets/R-Illu-3-baum.png";
+import pen from "../assets/pen.png";
 
 const AddSingleQuestion = () => {
   const [question, setQuestion] = useState("");
@@ -44,7 +44,7 @@ const AddSingleQuestion = () => {
     <div className="createQuestion">
       <h3 className="articles-heading">Create a question</h3>
       <Card style={{ width: "18rem" }} className="createQuestion">
-        <Card.Img variant="top" src={tree} />
+        <Card.Img variant="top" src={pen} />
         <Card.Body>
           <Card.Title>Your Question</Card.Title>
 

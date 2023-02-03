@@ -31,6 +31,7 @@ const GetAllAnswers = ({ answersArr, isLoading }) => {
 
   return (
     <div>
+    <div className="allanswers">
       {answersArr === null
         ? "loading answers ..."
         : answersOfOneQue.map((answersOfOneQue) => {
@@ -43,22 +44,26 @@ const GetAllAnswers = ({ answersArr, isLoading }) => {
               );
             } else {
               return (
-                <Card key={answersOfOneQue._id}>
-                  <Card.Header>Answer given on </Card.Header>
-                  <Card.Body>
-                    <Card.Title>Topic: </Card.Title>
-                    <Card.Text>{answersOfOneQue.answer}</Card.Text>
-                    <Button variant="warning">
-                      <Link to={`/editanswer/${answersOfOneQue._id}`}>
-                        edit
-                      </Link>
-                    </Button>
-                  </Card.Body>
-                </Card>
+                <div >
+                  <Card key={answersOfOneQue._id} style={{ width: "18rem", margin: "1em"}}>
+                    <Card.Header>Answer given on </Card.Header>
+                    <Card.Body>
+                      <Card.Title>Topic: </Card.Title>
+                      <Card.Text>{answersOfOneQue.answer}</Card.Text>
+                      <Button variant="warning">
+                        <Link to={`/editanswer/${answersOfOneQue._id}`}>
+                          edit
+                        </Link>
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </div>
               );
             }
           })}
-      <Button onClick={goBack} variant="warning">
+
+    </div>
+    <Button onClick={goBack} variant="warning">
         back
       </Button>
     </div>

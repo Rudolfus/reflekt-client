@@ -14,6 +14,7 @@ import logo from "../assets/logo.png";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { NavLink, Link } from "react-router-dom";
+import "../App.css"
 
 const Profile = ({ questionId }) => {
   const [userProfile, setUserProfile] = useState(false);
@@ -56,6 +57,7 @@ const Profile = ({ questionId }) => {
       ) : (
         <div>
           <div>
+          <div className="profile-card">
             <MDBContainer>
               <MDBRow className="justify-content-center">
                 <MDBCol md="9" lg="7" xl="5" className="mt-5">
@@ -95,13 +97,15 @@ const Profile = ({ questionId }) => {
                 </MDBCol>
               </MDBRow>
             </MDBContainer>
+          </div>
+            <Button variant="warning">
+              <NavLink to="/addquestion" className="profile-buttons">create new questions</NavLink>
+            </Button>{" "}
+
             {userProfile.questions.map((question) => {
               return (
                 <div className="userQuestions">
-                  <Button variant="warning">
-                    <NavLink to="/addquestion">create new questions</NavLink>
-                  </Button>{" "}
-                  <Card>
+                  <Card >
                     <Card.Header>Questions following</Card.Header>
                     <Card.Body>
                       <Card.Title>{question.topic}</Card.Title>

@@ -1,5 +1,6 @@
 import placeholder from "../assets/placeholder_icon.png";
 import tree from "../assets/R-Illu-3-baum.png";
+import pen from "../assets/pen.png";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
@@ -10,10 +11,13 @@ const About = () => {
   return (
     <div>
       <img src={tree} className="full-width-img" alt="wave-placeholder" />
-      <div>
-        <h1>About Reflekt</h1>
+      <div className="articles-text-block">
+      <h1 className="articles-heading-top">About Reflekt</h1>
         <div>
-          <img src={placeholder} alt="icon" />
+          <img src={pen}
+           width="100%"
+          height="100%"
+          alt="icon" />
         </div>
         <h2>Who we are</h2>
         <p>
@@ -23,11 +27,14 @@ const About = () => {
         </p>
       </div>
 
-      <div>
+      <div className="articles-text-block">
         <div>
-          <img src={placeholder} alt="icon" />
+        <img src={pen}
+           width="100%"
+          height="100%"
+          alt="icon" />
         </div>
-        <h2>What we do</h2>
+        <h1 className="articles-heading-top">What we do</h1>
         <p>
           Through science-backed journaling and mindfulness tools, Reflekt helps
           you create life-changing habits to support your mental health and find
@@ -35,11 +42,14 @@ const About = () => {
         </p>
       </div>
 
-      <div>
+      <div className="articles-text-block">
         <div>
-          <img src={placeholder} alt="icon" />
+        <img src={pen}
+           width="100%"
+          height="100%"
+          alt="icon" />
         </div>
-        <h2>Why we do it</h2>
+        <h1 className="articles-heading-top">Why we do it</h1>
         <p>
           Reflekt is proven to reduce stress by 14% in just 11 days. It can also
           help you with stress management and emotional regulation by providing

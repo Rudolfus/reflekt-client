@@ -263,6 +263,10 @@ h6 {
   margin: auto;
 }
 
+.existingTopics{
+  padding: 3em;
+}
+
 .createQuestion {
   margin: auto;
   padding: 1em;
@@ -283,6 +287,21 @@ h6 {
   max-width: 500px;
 }
 
+.profile-card{
+  padding: 1em;
+  padding-bottom: 2em;
+}
+
 .profile-buttons {
   padding: 1em;
+  margin: 1em;
+}
+
+/* all answers */
+.allanswers{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 2em;
 }

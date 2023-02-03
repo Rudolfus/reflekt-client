@@ -5,6 +5,10 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Card from "react-bootstrap/Card";
+import pen from "../assets/pen.png";
 
 const AddAnswer = () => {
   const [answer, setAnswer] = useState("");
@@ -12,6 +16,10 @@ const AddAnswer = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const { questionId } = useParams();
+
+  const goBack = () => {
+    navigate(-1);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,28 +43,46 @@ const AddAnswer = () => {
   };
 
   return (
-    <div>
-      <h3>Respond to the question</h3>
-      <br />
-      <form onSubmit={handleSubmit}>
-        <label>Your answer:</label>
-        <input
-          type="text"
-          name="answer"
-          value={answer}
-          onChange={(e) => setAnswer(e.target.value)}
-        />
-        <br />
-        <label>Make it private:</label>
-        <input
-          type="checkbox"
-          name="privacy"
-          value={isPublic}
-          onClick={(e) => setIsPublic(!isPublic)}
-        />
-        <br />
-        <button type="submit">Submit</button>
-      </form>
+    <div className="createQuestion">
+      <h3 className="articles-heading">Respond to the question</h3>
+      <Card style={{ width: "18rem" }} className="createQuestion">
+        <Card.Img variant="top" src={pen} />
+        <Card.Body>
+          <Card.Title>Your Answer</Card.Title>
+
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Answer</Form.Label>
+              <Form.Control
+                type="text"
+                name="answer"
+                value={answer}
+                onChange={(e) => setAnswer(e.target.value)}
+                placeholder="Type your answer"
+              />
+              <Form.Text className="text-muted">
+                Don't worry if you can't think of something. It is all about the question.
+              </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+              <Form.Check
+                type="checkbox"
+                name="privacy"
+                value={isPublic}
+                onClick={(e) => setIsPublic(!isPublic)}
+                label="This is private"
+              />
+            </Form.Group>
+            <Button variant="warning" type="submit">
+              Create
+            </Button>
+            <Button onClick={goBack} variant="warning">
+        back
+      </Button>
+          </Form>
+        </Card.Body>
+      </Card>
     </div>
   );
 };

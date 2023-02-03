@@ -1,5 +1,6 @@
 import SingleTopic from "./SingleTopic";
 import { useState } from "react";
+import "../App.css"
 
 const TopicList = ({ questionsArr }) => {
   const [viewTopic, setViewTopic] = useState("");
@@ -15,7 +16,7 @@ const TopicList = ({ questionsArr }) => {
   ];
 
   return (
-    <div>
+    <div className="allanswers">
       {/* use a forEach method to iterate over the topics array
         create a new component called "Topic" to render topic and list of questions
         realted to the topic */}

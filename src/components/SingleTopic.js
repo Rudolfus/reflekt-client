@@ -1,6 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
+import "../App.css"
 
 const SingleTopic = ({ topic, questionsArr, handleTopic, viewTopic }) => {
   const questions = questionsArr.filter((question) => {
@@ -45,7 +46,7 @@ const SingleTopic = ({ topic, questionsArr, handleTopic, viewTopic }) => {
       {topic === viewTopic &&
         chooseThreeQuestions(questions).map((question) => {
           return (
-            <Card style={{ width: "18rem" }}>
+            <Card style={{ width: "18rem", margin: "1em" }}>
               <ListGroup variant="flush">
                 <ListGroup.Item key={question.id}>
                   {question.question}
