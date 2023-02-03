@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom"; //  <== IMPORT
+import { useParams, useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 function EditAnswer() {
   const [answer, setAnswer] = useState("");
@@ -9,9 +10,18 @@ function EditAnswer() {
   const { answerId } = useParams();
   const navigate = useNavigate();
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  // Get the token from the localStorage
+  const storedToken = localStorage.getItem("authToken");
+
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api/answers/${answerId}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/answers/${answerId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         const oneSingleAnswer = response.data;
 
@@ -32,10 +42,11 @@ function EditAnswer() {
     axios
       .put(
         `${process.env.REACT_APP_API_URL}/api/answers/${answerId}`,
-        requestBody
+        requestBody,
+        { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then(() => {
-        navigate(`/answers/${answerId}`);
+        navigate("/myreflekt");
       });
   };
 
@@ -43,7 +54,9 @@ function EditAnswer() {
 
   const deleteAnswer = () => {
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/api/answers/${answerId}`)
+      .delete(`${process.env.REACT_APP_API_URL}/api/answers/${answerId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then(() => {
         navigate("/myreflekt");
       })
@@ -71,10 +84,17 @@ function EditAnswer() {
           onClick={(e) => setIsPublic(!isPublic)}
         />
 
-        <button type="submit">Update Answer</button>
+        <Button variant="warning" type="submit">
+          Update Question
+        </Button>
       </form>
 
-      <button onClick={deleteAnswer}>Delete Answer</button>
+      <Button onClick={deleteAnswer} variant="danger" type="submit">
+        Delete Question
+      </Button>
+      <Button onClick={goBack} variant="warning">
+        back
+      </Button>
     </div>
   );
 }

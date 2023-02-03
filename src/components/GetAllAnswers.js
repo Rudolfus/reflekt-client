@@ -3,8 +3,10 @@ import Spinner from "react-bootstrap/Spinner";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
-const GetAllAnswers = ({ answersArr, isLoading, questionsArr }) => {
+const GetAllAnswers = ({ answersArr, isLoading }) => {
   const navigate = useNavigate();
   const { Id } = useParams();
 
@@ -25,7 +27,7 @@ const GetAllAnswers = ({ answersArr, isLoading, questionsArr }) => {
   // compare both and return the matching elements
   const answersOfOneQue = answersArr.filter((answer) => answer.question === Id);
   // expected output: 3 matching answers to one question
-  console.log(answersOfOneQue);
+  //console.log(answersOfOneQue);
 
   return (
     <div>
@@ -41,15 +43,24 @@ const GetAllAnswers = ({ answersArr, isLoading, questionsArr }) => {
               );
             } else {
               return (
-                <div key={answersOfOneQue._id}>
-                  <div>
-                    <h4>answer: {answersOfOneQue.answer}</h4>
-                  </div>
-                </div>
+                <Card key={answersOfOneQue._id}>
+                  <Card.Header>Answer given on </Card.Header>
+                  <Card.Body>
+                    <Card.Title>Topic: </Card.Title>
+                    <Card.Text>{answersOfOneQue.answer}</Card.Text>
+                    <Button variant="warning">
+                      <Link to={`/editanswer/${answersOfOneQue._id}`}>
+                        edit
+                      </Link>
+                    </Button>
+                  </Card.Body>
+                </Card>
               );
             }
           })}
-      <button onClick={goBack}>Back</button>
+      <Button onClick={goBack} variant="warning">
+        back
+      </Button>
     </div>
   );
 };

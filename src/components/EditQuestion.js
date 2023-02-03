@@ -11,6 +11,10 @@ function EditQuestion({ listQuestions }) {
   const { questionId } = useParams();
   const navigate = useNavigate();
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
   // Get the token from the localStorage
   const storedToken = localStorage.getItem("authToken");
 
@@ -100,6 +104,9 @@ function EditQuestion({ listQuestions }) {
 
       <Button onClick={deleteQuestion} variant="danger" type="submit">
         Delete Question
+      </Button>
+      <Button onClick={goBack} variant="warning">
+        back
       </Button>
     </div>
   );
