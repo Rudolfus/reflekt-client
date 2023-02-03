@@ -44,12 +44,12 @@ const SelectMode = ({ topic }) => {
   return (
     <div className="selectMode">
       <div>
-        <TopicList questionsArr={questionsArr} />
-      </div>
-      <div>
         <Button variant="warning">
           <NavLink to="/addquestion">create new questions</NavLink>
         </Button>{" "}
+      </div>
+      <div className="TopicList">
+        <TopicList questionsArr={questionsArr} />
       </div>
     </div>
   );

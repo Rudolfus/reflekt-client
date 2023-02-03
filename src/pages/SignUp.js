@@ -16,6 +16,7 @@ import {
   MDBInput,
   MDBIcon,
 } from "mdb-react-ui-kit";
+import Footer from "../components/Footer";
 
 function SignupPage(props) {
   const [email, setEmail] = useState("");
@@ -62,131 +63,99 @@ function SignupPage(props) {
   };
 
   return (
-    <MDBContainer fluid>
-      <MDBCard className="text-black m-5" style={{ borderRadius: "25px" }}>
-        <MDBCardBody>
-          <form onSubmit={handleSignupSubmit}>
-            <MDBRow>
-              <MDBCol
-                md="10"
-                lg="6"
-                className="order-2 order-lg-1 d-flex flex-column align-items-center"
-              >
-                <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                  Sign up
-                </p>
-
-                <div className="d-flex flex-row align-items-center mb-4 ">
-                  <MDBIcon fas icon="user me-3" size="lg" />
-                  <MDBInput
-                    label="Your Name"
-                    name="name"
-                    value={name}
-                    onChange={handleName}
-                    id="form1"
-                    type="text"
-                    className="w-100"
-                  />
-                </div>
-
-                <div className="d-flex flex-row align-items-center mb-4">
-                  <MDBIcon fas icon="envelope me-3" size="lg" />
-                  <MDBInput
-                    label="Your Email"
-                    name="email"
-                    value={email}
-                    onChange={handleEmail}
-                    id="form2"
-                    type="email"
-                  />
-                </div>
-
-                <div className="d-flex flex-row align-items-center mb-4">
-                  <MDBIcon fas icon="lock me-3" size="lg" />
-                  <MDBInput
-                    label="Password"
-                    name="password"
-                    value={password}
-                    onChange={handlePassword}
-                    id="form3"
-                    type="password"
-                  />
-                </div>
-
-                <div className="d-flex flex-row align-items-center mb-4">
-                  <MDBIcon fas icon="key me-3" size="lg" />
-                  <MDBInput
-                    label="Repeat your password"
-                    id="form4"
-                    type="password"
-                  />
-                </div>
-
-                <MDBBtn
-                  type="submit"
-                  className="mb-4"
-                  color="warning"
-                  size="lg"
+    <div>
+      <MDBContainer fluid>
+        <MDBCard className="text-black m-5" style={{ borderRadius: "25px" }}>
+          <MDBCardBody>
+            <form onSubmit={handleSignupSubmit}>
+              <MDBRow>
+                <MDBCol
+                  md="10"
+                  lg="6"
+                  className="order-2 order-lg-1 d-flex flex-column align-items-center"
                 >
-                  Register
-                </MDBBtn>
+                  <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                    Sign up
+                  </p>
 
-                {errorMessage && (
-                  <p className="error-message">{errorMessage}</p>
-                )}
-                <br />
-                <p>Already have an account?</p>
+                  <div className="d-flex flex-row align-items-center mb-4 ">
+                    <MDBIcon fas icon="user me-3" size="lg" />
+                    <MDBInput
+                      label="Your Name"
+                      name="name"
+                      value={name}
+                      onChange={handleName}
+                      id="form1"
+                      type="text"
+                      className="w-100"
+                    />
+                  </div>
 
-                <NavLink to="/login">Log in</NavLink>
-              </MDBCol>
+                  <div className="d-flex flex-row align-items-center mb-4">
+                    <MDBIcon fas icon="envelope me-3" size="lg" />
+                    <MDBInput
+                      label="Your Email"
+                      name="email"
+                      value={email}
+                      onChange={handleEmail}
+                      id="form2"
+                      type="email"
+                    />
+                  </div>
 
-              <MDBCol
-                md="10"
-                lg="6"
-                className="order-1 order-lg-2 d-flex align-items-center"
-              >
-                <MDBCardImage src={tree} fluid />
-              </MDBCol>
-            </MDBRow>
-          </form>
-        </MDBCardBody>
-      </MDBCard>
-    </MDBContainer>
+                  <div className="d-flex flex-row align-items-center mb-4">
+                    <MDBIcon fas icon="lock me-3" size="lg" />
+                    <MDBInput
+                      label="Password"
+                      name="password"
+                      value={password}
+                      onChange={handlePassword}
+                      id="form3"
+                      type="password"
+                    />
+                  </div>
 
-    // <div className="SignupPage">
-    //   <h1>Sign Up</h1>
+                  <div className="d-flex flex-row align-items-center mb-4">
+                    <MDBIcon fas icon="key me-3" size="lg" />
+                    <MDBInput
+                      label="Repeat your password"
+                      id="form4"
+                      type="password"
+                    />
+                  </div>
 
-    //   <form onSubmit={handleSignupSubmit}>
-    //     <label>Email:</label>
-    //     <input type="email" name="email" value={email} onChange={handleEmail} />
+                  <MDBBtn
+                    type="submit"
+                    className="mb-4"
+                    color="warning"
+                    size="lg"
+                  >
+                    Register
+                  </MDBBtn>
 
-    //     <label>Password:</label>
-    //     <input
-    //       type="password"
-    //       name="password"
-    //       value={password}
-    //       onChange={handlePassword}
-    //     />
+                  {errorMessage && (
+                    <p className="error-message">{errorMessage}</p>
+                  )}
+                  <br />
+                  <p>Already have an account?</p>
 
-    //     <label>Name:</label>
-    //     <input type="text" name="name" value={name} onChange={handleName} />
+                  <NavLink to="/login">Log in</NavLink>
+                </MDBCol>
 
-    //     <button type="submit">Sign Up</button>
-    //   </form>
-
-    //   {errorMessage && <p className="error-message">{errorMessage}</p>}
-    //   <br />
-    //   <p>Already have account?</p>
-    //   <NavLink to="/login"> Log in</NavLink>
-    //   {/* <NavLink>
-    //     <div class="ta-c padT150 padB150">
-    //       <button class="button accept-btn" onClick="addAnimation2()">
-    //         Log in
-    //       </button>
-    //     </div>
-    //   </NavLink> */}
-    //   <img src={tree} className="full-width-img" alt="wave-placeholder" />
-    // </div>
+                <MDBCol
+                  md="10"
+                  lg="6"
+                  className="order-1 order-lg-2 d-flex align-items-center"
+                >
+                  <MDBCardImage src={tree} fluid />
+                </MDBCol>
+              </MDBRow>
+            </form>
+          </MDBCardBody>
+        </MDBCard>
+      </MDBContainer>
+      <Footer />
+    </div>
   );
 }
 

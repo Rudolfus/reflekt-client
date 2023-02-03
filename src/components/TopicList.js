@@ -14,26 +14,6 @@ const TopicList = ({ questionsArr }) => {
     ...new Set(questionsArr.map((question) => question.topic)),
   ];
 
-  /////////////////////////////////
-  const questions = questionsArr.filter((question) => {
-    // return question.topic === topic;
-    return true;
-  });
-
-  const chooseThreeQuestions = (someArr) => {
-    const filteredArrayofQuestions = [];
-
-    let randomNumber = Math.floor(Math.random() * someArr.length) - 1;
-
-    for (let i = 0; i < 3; i++) {
-      filteredArrayofQuestions.push(someArr[randomNumber]);
-    }
-
-    return filteredArrayofQuestions;
-  };
-
-  /////////////////////////////////
-
   return (
     <div>
       {/* use a forEach method to iterate over the topics array
