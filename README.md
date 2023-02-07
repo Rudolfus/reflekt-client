@@ -32,3 +32,7 @@ npm run dev || npm start
 
 ## Demo
 The frontend of REFLEKT can be found here: https://reflektapp.netlify.app/
+
+## Illustrations by Tanya Teibtner
+Here you can contact her: https://tanyateibtner.com/ 
+Here is more content on her Instagram: https://www.instagram.com/tanya.teibtner/ 
